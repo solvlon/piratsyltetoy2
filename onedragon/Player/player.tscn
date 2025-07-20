@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://caidnjvy8yfg7"]
+[gd_scene load_steps=11 format=3 uid="uid://caidnjvy8yfg7"]
 
-[ext_resource type="Script" uid="uid://cu1juco1u35yt" path="res://player.gd" id="1_4ntmi"]
+[ext_resource type="Script" uid="uid://cf0e6gvmqf6ld" path="res://Player/player.gd" id="1_btcbx"]
 [ext_resource type="Texture2D" uid="uid://cl530wg523wio" path="res://assets/tiny-dungon/tilemap.png" id="2_btcbx"]
+[ext_resource type="Script" uid="uid://c76olrrqrua71" path="res://Player/PlayerController.gd" id="2_gwnis"]
+[ext_resource type="PackedScene" uid="uid://k0jnn526oyw" path="res://Player/Weapon/weapon.tscn" id="4_gwnis"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gwnis"]
 atlas = ExtResource("2_btcbx")
@@ -87,19 +89,45 @@ _data = {
 &"Run": SubResource("Animation_gwnis")
 }
 
-[node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_4ntmi")
+[node name="Player" type="Node2D"]
+script = ExtResource("1_btcbx")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="PlayerController" type="CharacterBody2D" parent="."]
+script = ExtResource("2_gwnis")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerController"]
 texture = SubResource("AtlasTexture_gwnis")
 region_enabled = true
 region_rect = Rect2(96, 224, 32, 32)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="WeaponAttach" type="Marker2D" parent="PlayerController/Sprite2D"]
+position = Vector2(12, 8)
+
+[node name="WeaponAttach2" type="Marker2D" parent="PlayerController/Sprite2D"]
+position = Vector2(-12, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerController"]
 shape = SubResource("RectangleShape2D_k53q1")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerController"]
 libraries = {
 &"": SubResource("AnimationLibrary_gwnis")
 }
 autoplay = "Idle"
+
+[node name="Weapon" parent="." node_paths=PackedStringArray("player", "attach") instance=ExtResource("4_gwnis")]
+position = Vector2(23, 0)
+player = NodePath("../PlayerController")
+attach = NodePath("../PlayerController/Sprite2D/WeaponAttach")
+
+[node name="Weapon2" parent="." node_paths=PackedStringArray("player", "attach") instance=ExtResource("4_gwnis")]
+player = NodePath("../PlayerController")
+attach = NodePath("../PlayerController/Sprite2D/WeaponAttach2")
+FOLLOW_VEL_OFFSET = 0.01
+
+[node name="WeaponSprite" parent="Weapon2" index="0"]
+rotation = -0.436332
+scale = Vector2(0.75, 0.75)
+region_rect = Rect2(192, 256, 32, 32)
+
+[editable path="Weapon2"]

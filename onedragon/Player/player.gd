@@ -1,6 +1,6 @@
-extends Camera2D
+extends Node2D
 
-@onready var target = $"../Player/PlayerController"
+@onready var target = $PlayerController/Sprite2D/WeaponAttach
 
 @export var SPEED = 10
 
