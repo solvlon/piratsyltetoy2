@@ -1,14 +1,59 @@
-[gd_scene load_steps=10 format=3 uid="uid://caidnjvy8yfg7"]
+[gd_scene load_steps=14 format=3 uid="uid://caidnjvy8yfg7"]
 
 [ext_resource type="Texture2D" uid="uid://cl530wg523wio" path="res://assets/tiny-dungon/tilemap.png" id="2_btcbx"]
 [ext_resource type="Script" uid="uid://c76olrrqrua71" path="res://Player/PlayerController.gd" id="2_gwnis"]
+[ext_resource type="Shader" uid="uid://b6cvhsu7eivt3" path="res://Player/hittable.gdshader" id="2_k53q1"]
 [ext_resource type="PackedScene" uid="uid://k0jnn526oyw" path="res://Player/Weapon/weapon.tscn" id="4_gwnis"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fhl08"]
+shader = ExtResource("2_k53q1")
+shader_parameter/flash_color = Color(1, 0, 0, 1)
+shader_parameter/flash_value = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gwnis"]
 atlas = ExtResource("2_btcbx")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k53q1"]
 size = Vector2(32, 32)
+
+[sub_resource type="Animation" id="Animation_k53q1"]
+resource_name = "Hit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -3.83), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.833333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -1.5708, -1.5708, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:material:shader_parameter/flash_value")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.133333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
 
 [sub_resource type="Animation" id="Animation_4ntmi"]
 resource_name = "Idle"
@@ -64,6 +109,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:material:shader_parameter/flash_value")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_gwnis"]
 resource_name = "Run"
@@ -75,7 +132,7 @@ tracks/0/path = NodePath("Sprite2D:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.666667, 1),
+"times": PackedFloat32Array(0, 0.3, 0.666, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [0.0, -0.261799, 0.261799, 0.0]
@@ -83,10 +140,25 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gwnis"]
 _data = {
+&"Hit": SubResource("Animation_k53q1"),
 &"Idle": SubResource("Animation_4ntmi"),
 &"RESET": SubResource("Animation_btcbx"),
 &"Run": SubResource("Animation_gwnis")
 }
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_btcbx"]
+particle_flag_disable_z = true
+angle_min = -110.3
+angle_max = 103.3
+spread = 180.0
+initial_velocity_min = 56.9
+initial_velocity_max = 74.84
+angular_velocity_min = -149.19
+angular_velocity_max = 45.2
+gravity = Vector3(0, 98, 0)
+scale_min = 2.0
+scale_max = 2.0
+color = Color(1, 0, 0, 1)
 
 [node name="Player" type="Node2D"]
 
@@ -94,6 +166,7 @@ _data = {
 script = ExtResource("2_gwnis")
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerController"]
+material = SubResource("ShaderMaterial_fhl08")
 texture = SubResource("AtlasTexture_gwnis")
 region_enabled = true
 region_rect = Rect2(96, 224, 32, 32)
@@ -113,12 +186,22 @@ libraries = {
 }
 autoplay = "Idle"
 
+[node name="Blood" type="GPUParticles2D" parent="PlayerController"]
+emitting = false
+amount = 50
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_btcbx")
+
 [node name="Weapon" parent="." node_paths=PackedStringArray("player", "attach") instance=ExtResource("4_gwnis")]
 position = Vector2(23, 0)
 player = NodePath("../PlayerController")
 attach = NodePath("../PlayerController/Sprite2D/WeaponAttach")
 
 [node name="Weapon2" parent="." node_paths=PackedStringArray("player", "attach") instance=ExtResource("4_gwnis")]
+position = Vector2(-27, 0)
 player = NodePath("../PlayerController")
 attach = NodePath("../PlayerController/Sprite2D/WeaponAttach2")
 FOLLOW_VEL_OFFSET = 0.01
