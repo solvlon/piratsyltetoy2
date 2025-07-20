@@ -1,3 +1,14 @@
-[gd_scene format=3 uid="uid://ov8pcp2t75av"]
+[gd_scene load_steps=4 format=3 uid="uid://ov8pcp2t75av"]
+
+[ext_resource type="Texture2D" uid="uid://bvo0t2uk1febt" path="res://icon.svg" id="1_feb5d"]
+[ext_resource type="PackedScene" uid="uid://caidnjvy8yfg7" path="res://Player/player.tscn" id="2_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://daoaagl7kep0v" path="res://Camera/player_camera.tscn" id="3_7jktm"]
 
 [node name="Game" type="Node"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_feb5d")
+
+[node name="Player" parent="." instance=ExtResource("2_fc0e3")]
+
+[node name="PlayerCamera" parent="." instance=ExtResource("3_7jktm")]

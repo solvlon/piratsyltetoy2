@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://caidnjvy8yfg7"]
+
+[ext_resource type="Script" uid="uid://cu1juco1u35yt" path="res://player.gd" id="1_4ntmi"]
+[ext_resource type="Texture2D" uid="uid://cl530wg523wio" path="res://assets/tiny-dungon/tilemap.png" id="2_btcbx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwnis"]
+atlas = ExtResource("2_btcbx")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k53q1"]
+size = Vector2(32, 32)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_4ntmi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_gwnis")
+region_enabled = true
+region_rect = Rect2(96, 224, 32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_k53q1")
