@@ -15,6 +15,10 @@ run/main_scene="uid://ov8pcp2t75av"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Globals="*res://globals.gd"
+
 [input]
 
 up={
