@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://caidnjvy8yfg7"]
+[gd_scene load_steps=18 format=3 uid="uid://caidnjvy8yfg7"]
 
 [ext_resource type="Texture2D" uid="uid://cl530wg523wio" path="res://assets/tiny-dungon/tilemap.png" id="2_btcbx"]
 [ext_resource type="Script" uid="uid://c76olrrqrua71" path="res://Player/PlayerController.gd" id="2_gwnis"]
 [ext_resource type="Shader" uid="uid://b6cvhsu7eivt3" path="res://Player/hittable.gdshader" id="2_k53q1"]
 [ext_resource type="PackedScene" uid="uid://k0jnn526oyw" path="res://Player/Weapon/weapon.tscn" id="4_gwnis"]
+[ext_resource type="Texture2D" uid="uid://pclb6cfj5ajg" path="res://assets/particles/SmokePuffParticleSheet.png" id="4_k53q1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fhl08"]
 shader = ExtResource("2_k53q1")
@@ -121,6 +122,30 @@ tracks/2/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:dashSpeedMultiplier")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Dust:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_gwnis"]
 resource_name = "Run"
@@ -138,8 +163,36 @@ tracks/0/keys = {
 "values": [0.0, -0.261799, 0.261799, 0.0]
 }
 
+[sub_resource type="Animation" id="Animation_fhl08"]
+resource_name = "Dash"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:dashSpeedMultiplier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 3.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Dust:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gwnis"]
 _data = {
+&"Dash": SubResource("Animation_fhl08"),
 &"Hit": SubResource("Animation_k53q1"),
 &"Idle": SubResource("Animation_4ntmi"),
 &"RESET": SubResource("Animation_btcbx"),
@@ -159,6 +212,21 @@ gravity = Vector3(0, 98, 0)
 scale_min = 2.0
 scale_max = 2.0
 color = Color(1, 0, 0, 1)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fhl08"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 5
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vtle1"]
+particle_flag_disable_z = true
+initial_velocity_max = 25.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.05
+scale_max = 0.05
+anim_speed_min = 1.0
+anim_speed_max = 1.0
 
 [node name="Player" type="Node2D"]
 
@@ -194,6 +262,15 @@ one_shot = true
 explosiveness = 1.0
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_btcbx")
+
+[node name="Dust" type="GPUParticles2D" parent="PlayerController"]
+material = SubResource("CanvasItemMaterial_fhl08")
+position = Vector2(0, 14)
+emitting = false
+amount = 25
+texture = ExtResource("4_k53q1")
+explosiveness = 0.64
+process_material = SubResource("ParticleProcessMaterial_vtle1")
 
 [node name="Weapon" parent="." node_paths=PackedStringArray("player", "attach") instance=ExtResource("4_gwnis")]
 position = Vector2(23, 0)
