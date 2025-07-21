@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var animationPlayer = $AnimationPlayer
 @onready var sprite = $Sprite2D
 @onready var hitParticleEffect = $Blood
+@onready var weapon1 = $"../Weapon"
 
 func _physics_process(delta: float) -> void:
 	
@@ -13,8 +14,8 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, pushRecovery)
 		velocity.y = move_toward(velocity.y, 0, pushRecovery)
 	else:
-		if Input.is_action_pressed("Attack1"):
-			on_hit(Vector2(500, -500))
+		if Input.is_action_just_pressed("Attack1"):
+			attack()
 		else:
 			manage_motion()
 
@@ -41,6 +42,8 @@ func manage_motion() -> void:
 	if direction.x > 0:
 		sprite.flip_h = false
 
+func attack() -> void:
+	weapon1.attack()
 
 func on_hit(force: Vector2) -> void:
 	animationPlayer.speed_scale = 1

@@ -207,7 +207,6 @@ attach = NodePath("../PlayerController/Sprite2D/WeaponAttach2")
 FOLLOW_VEL_OFFSET = 0.01
 
 [node name="WeaponSprite" parent="Weapon2" index="0"]
-rotation = -0.436332
 scale = Vector2(0.75, 0.75)
 region_rect = Rect2(192, 256, 32, 32)
 
