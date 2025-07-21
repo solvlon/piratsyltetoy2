@@ -1,14 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://ov8pcp2t75av"]
+[gd_scene load_steps=5 format=3 uid="uid://ov8pcp2t75av"]
 
-[ext_resource type="Texture2D" uid="uid://bvo0t2uk1febt" path="res://icon.svg" id="1_feb5d"]
 [ext_resource type="PackedScene" uid="uid://caidnjvy8yfg7" path="res://Player/player.tscn" id="2_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://daoaagl7kep0v" path="res://Camera/player_camera.tscn" id="3_7jktm"]
+[ext_resource type="PackedScene" uid="uid://b6mnbbiykjeex" path="res://Map/map.tscn" id="4_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://q3m8am276760" path="res://Dragon/dragon.tscn" id="5_7jktm"]
 
 [node name="Game" type="Node"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_feb5d")
+[node name="Map" parent="." instance=ExtResource("4_fc0e3")]
 
 [node name="Player" parent="." instance=ExtResource("2_fc0e3")]
+position = Vector2(1563, 1899)
 
 [node name="PlayerCamera" parent="." instance=ExtResource("3_7jktm")]
+position = Vector2(1278, 612)
+
+[node name="Dragon" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_7jktm")]
+position = Vector2(1691, 948)
+player = NodePath("../Player")
