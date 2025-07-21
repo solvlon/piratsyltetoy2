@@ -1,10 +1,155 @@
-[gd_scene load_steps=4 format=3 uid="uid://q3m8am276760"]
+[gd_scene load_steps=19 format=3 uid="uid://q3m8am276760"]
 
 [ext_resource type="Script" uid="uid://chrscg7be4ah2" path="res://Dragon/dragon.gd" id="1_80mar"]
 [ext_resource type="Texture2D" uid="uid://cl530wg523wio" path="res://assets/tiny-dungon/tilemap.png" id="1_wq5gb"]
+[ext_resource type="Texture2D" uid="uid://bvo0t2uk1febt" path="res://icon.svg" id="3_pl6bp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_80mar"]
 radius = 55.0818
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pl6bp"]
+radius = 354.203
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kar7i"]
+radius = 165.747
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cjlra"]
+radius = 84.9294
+
+[sub_resource type="Gradient" id="Gradient_kar7i"]
+offsets = PackedFloat32Array(0, 0.227273, 0.545455, 0.872727, 1)
+colors = PackedColorArray(0, 0, 1, 0, 0, 0, 1, 1, 0.618031, 0.483331, 0.270464, 1, 0.894118, 0.282353, 0.152941, 1, 1, 0.203922, 0.109804, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cjlra"]
+gradient = SubResource("Gradient_kar7i")
+
+[sub_resource type="Curve" id="Curve_u2dun"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.602941, 0.988764), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_8jrqu"]
+curve = SubResource("Curve_u2dun")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1ryjn"]
+particle_flag_disable_z = true
+initial_velocity_min = 302.3
+initial_velocity_max = 533.07
+gravity = Vector3(0, 0, 0)
+scale_min = 0.4
+scale_curve = SubResource("CurveTexture_8jrqu")
+color_ramp = SubResource("GradientTexture1D_cjlra")
+
+[sub_resource type="Curve" id="Curve_pl6bp"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.360294, 0.764045), 0.0, 0.0, 0, 0, Vector2(0.455882, 0.011236), -3.48262, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_kar7i"]
+curve = SubResource("Curve_pl6bp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cjlra"]
+particle_flag_disable_z = true
+spread = 0.0
+initial_velocity_min = 926.17
+initial_velocity_max = 1000.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_kar7i")
+
+[sub_resource type="Animation" id="Animation_pl6bp"]
+resource_name = "TileSwipeAttack"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.31, 0.71, 1.52, 2, 500),
+"transitions": PackedFloat32Array(1, 3.4822, 1, 1, 0.277393, 1),
+"update": 0,
+"values": [0.0, 1.74533, 5.23599, 13.9626, 18.8496, 6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../SpinParticles:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.31, 0.71, 1.52, 2),
+"transitions": PackedFloat32Array(1, 3.4822, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.74533, 5.23599, 13.9626, 18.8496]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../SpinParticles:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_kar7i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../SpinParticles:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../SpinParticles:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Sprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cjlra"]
+_data = {
+&"RESET": SubResource("Animation_kar7i"),
+&"TileSwipeAttack": SubResource("Animation_pl6bp")
+}
 
 [node name="Dragon" type="CharacterBody2D"]
 script = ExtResource("1_80mar")
@@ -13,6 +158,7 @@ script = ExtResource("1_80mar")
 shape = SubResource("CircleShape2D_80mar")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 scale = Vector2(3, 3)
 texture = ExtResource("1_wq5gb")
 region_enabled = true
@@ -20,4 +166,48 @@ region_rect = Rect2(61.2566, 287.552, 35.5167, 31.4186)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 unique_name_in_owner = true
-debug_enabled = true
+
+[node name="AttackCooldown" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="FireAttackArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FireAttackArea"]
+shape = SubResource("CircleShape2D_pl6bp")
+
+[node name="TileSwipeArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="TileSwipeArea"]
+shape = SubResource("CircleShape2D_kar7i")
+
+[node name="ClawAttackArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="ClawAttackArea"]
+shape = SubResource("CircleShape2D_cjlra")
+
+[node name="FireParticles" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+emitting = false
+amount = 100
+texture = ExtResource("3_pl6bp")
+one_shot = true
+explosiveness = 0.53
+process_material = SubResource("ParticleProcessMaterial_1ryjn")
+
+[node name="SpinParticles" type="GPUParticles2D" parent="."]
+amount = 10
+texture = ExtResource("3_pl6bp")
+one_shot = true
+explosiveness = 0.51
+process_material = SubResource("ParticleProcessMaterial_cjlra")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+root_node = NodePath("../AttackCooldown")
+libraries = {
+&"": SubResource("AnimationLibrary_cjlra")
+}
