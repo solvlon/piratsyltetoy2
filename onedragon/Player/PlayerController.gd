@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name Player
+class_name PlayerController
 
 @export var moveSpeed = 300.0
 @export var dashSpeedMultiplier = 1.0
