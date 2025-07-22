@@ -1,6 +1,6 @@
 extends Camera2D
 
-@onready var target = $"../Player"
+@onready var target = $"../Player/PlayerController"
 
 @export var SPEED = 10
 
