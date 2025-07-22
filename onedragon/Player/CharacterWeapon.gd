@@ -12,6 +12,7 @@ extends Node2D
 @export var FOLLOW_VEL_OFFSET = 0.02
 
 @onready var animation = $AnimationPlayer
+@onready var hitParticle = $HitParticle
 
 var _isAttacking = false
 var _isGoingBack = false
@@ -42,4 +43,7 @@ func attack() -> void:
 	_isGoingBack = true
 	await get_tree().create_timer(ATTACK_BACK_SPEED).timeout
 	_isGoingBack = false
-	
+
+func _on_touch(body) -> void:
+	hitParticle.restart()
+	hitParticle.emitting = true

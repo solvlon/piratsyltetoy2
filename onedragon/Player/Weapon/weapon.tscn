@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://k0jnn526oyw"]
+[gd_scene load_steps=9 format=3 uid="uid://k0jnn526oyw"]
 
 [ext_resource type="Script" uid="uid://cc1bpigvgwg2m" path="res://Player/CharacterWeapon.gd" id="1_tj4no"]
 [ext_resource type="Texture2D" uid="uid://cl530wg523wio" path="res://assets/tiny-dungon/tilemap.png" id="2_87rp5"]
@@ -82,6 +82,19 @@ _data = {
 &"RESET": SubResource("Animation_fhl08")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_tj4no"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tj4no"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 147.83
+initial_velocity_max = 147.83
+gravity = Vector3(0, 50, 0)
+scale_min = 3.0
+scale_max = 3.0
+color = Color(1, 1, 0.25098, 1)
+
 [node name="Weapon" type="Node2D"]
 script = ExtResource("1_tj4no")
 
@@ -97,3 +110,20 @@ libraries = {
 &"": SubResource("AnimationLibrary_fhl08")
 }
 autoplay = "Idle"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_tj4no")
+
+[node name="HitParticle" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 20
+lifetime = 0.2
+one_shot = true
+explosiveness = 0.8
+process_material = SubResource("ParticleProcessMaterial_tj4no")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_touch"]
