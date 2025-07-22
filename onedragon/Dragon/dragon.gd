@@ -27,7 +27,7 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	
-	navigation_agent_2d.target_position = player.position
+	navigation_agent_2d.target_position = player.player_controller.global_position
 	
 	
 	if not navigation_agent_2d.is_navigation_finished() and not _is_attacking:
