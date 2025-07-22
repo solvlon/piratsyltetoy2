@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://q3m8am276760"]
+[gd_scene load_steps=25 format=3 uid="uid://q3m8am276760"]
 
 [ext_resource type="Script" uid="uid://chrscg7be4ah2" path="res://Dragon/dragon.gd" id="1_80mar"]
 [ext_resource type="Texture2D" uid="uid://cl530wg523wio" path="res://assets/tiny-dungon/tilemap.png" id="1_wq5gb"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_80mar"]
 radius = 55.0818
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u2dun"]
+radius = 482.009
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pl6bp"]
 radius = 354.203
@@ -38,6 +41,28 @@ gravity = Vector3(0, 0, 0)
 scale_min = 0.4
 scale_curve = SubResource("CurveTexture_8jrqu")
 color_ramp = SubResource("GradientTexture1D_cjlra")
+
+[sub_resource type="Gradient" id="Gradient_pl6bp"]
+offsets = PackedFloat32Array(0, 0.0727273, 0.181818, 0.345455, 1)
+colors = PackedColorArray(0, 0, 1, 0, 0, 0, 1, 1, 0.618031, 0.483331, 0.270464, 1, 0.894118, 0.282353, 0.152941, 1, 1, 0.203922, 0.109804, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kar7i"]
+gradient = SubResource("Gradient_pl6bp")
+
+[sub_resource type="Curve" id="Curve_cjlra"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.147059, 0.348315), 0.0, 0.0, 0, 0, Vector2(0.301471, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_u2dun"]
+curve = SubResource("Curve_cjlra")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8jrqu"]
+particle_flag_disable_z = true
+initial_velocity_max = 230.77
+gravity = Vector3(0, -200, 0)
+scale_min = 0.4
+scale_curve = SubResource("CurveTexture_u2dun")
+color_ramp = SubResource("GradientTexture1D_kar7i")
 
 [sub_resource type="Curve" id="Curve_pl6bp"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.360294, 0.764045), 0.0, 0.0, 0, 0, Vector2(0.455882, 0.011236), -3.48262, 0.0, 0, 0]
@@ -171,6 +196,12 @@ unique_name_in_owner = true
 one_shot = true
 autostart = true
 
+[node name="FollowArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FollowArea"]
+shape = SubResource("CircleShape2D_u2dun")
+
 [node name="FireAttackArea" type="Area2D" parent="."]
 unique_name_in_owner = true
 
@@ -191,12 +222,22 @@ shape = SubResource("CircleShape2D_cjlra")
 
 [node name="FireParticles" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
+visible = false
 emitting = false
 amount = 100
 texture = ExtResource("3_pl6bp")
 one_shot = true
 explosiveness = 0.53
 process_material = SubResource("ParticleProcessMaterial_1ryjn")
+
+[node name="FirePreParticles" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+emitting = false
+amount = 10
+texture = ExtResource("3_pl6bp")
+one_shot = true
+explosiveness = 0.53
+process_material = SubResource("ParticleProcessMaterial_8jrqu")
 
 [node name="SpinParticles" type="GPUParticles2D" parent="."]
 amount = 10

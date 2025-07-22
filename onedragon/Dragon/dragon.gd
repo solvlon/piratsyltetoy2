@@ -5,12 +5,13 @@ class_name Dragon
 const SPEED = 200.0
 const ATTACK_MIN_WAIT_TIME = 3
 const ATTACK_MAX_WAIT_TIME = 6
-
+const FIREBALL = preload("res://Dragon/fireball.tscn")
 
 
 @export var player : Player
 
 var _is_attacking = false
+var _spawn_position
 
 
 @onready var navigation_agent_2d: NavigationAgent2D = %NavigationAgent2D
@@ -21,13 +22,19 @@ var _is_attacking = false
 @onready var fire_particles: GPUParticles2D = %FireParticles
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var sprite_2d: Sprite2D = %Sprite2D
+@onready var fire_pre_particles: GPUParticles2D = %FirePreParticles
+@onready var follow_area: Area2D = %FollowArea
 
 func _ready() -> void:
 	attack_cooldown.timeout.connect(_on_attack_cooldown_timeout)
+	_spawn_position = global_position
 
 func _physics_process(_delta: float) -> void:
 	
-	navigation_agent_2d.target_position = player.player_controller.global_position
+	if follow_area.get_overlapping_bodies().has(player):
+		navigation_agent_2d.target_position = player.global_position
+	else:
+		navigation_agent_2d.target_position = _spawn_position
 	
 	
 	if not navigation_agent_2d.is_navigation_finished() and not _is_attacking:
@@ -48,29 +55,30 @@ func _on_attack_cooldown_timeout():
 	elif fire_attack_area.get_overlapping_bodies().has(player):
 		_fire_attack()	
 	
-	print("draggon attacks")
 	attack_cooldown.start(randf_range(ATTACK_MIN_WAIT_TIME,ATTACK_MAX_WAIT_TIME))
 
 func _fire_attack():
-	print("fire attack")
 	_is_attacking = true
+	fire_pre_particles.emitting = true
+	await fire_pre_particles.finished
 	fire_particles.emitting = true
-	fire_particles.rotation = position.direction_to(player.position).angle()
+	var fireball : FireBall = FIREBALL.instantiate()
+	fireball.move_direction = position.direction_to(player.global_position)
+	add_child(fireball)
+	fire_particles.rotation = position.direction_to(player.global_position).angle()
 	await  fire_particles.finished
 	_is_attacking = false
 
 func _tile_swipe_attack():
-	print ("tile swipe")
 	_is_attacking = true
 	animation_player.play("TileSwipeAttack")
 	await  animation_player.animation_finished
 	_is_attacking = false
 	
 func _claw_attack():
-	print("claw attack")
 	_is_attacking = true
 	var tween = create_tween()
-	tween.tween_property(sprite_2d,"position",position.direction_to(player.position) * 20, 0.1) 
+	tween.tween_property(sprite_2d,"position",position.direction_to(player.global_position) * 20, 0.1) 
 	tween.tween_property(sprite_2d,"position",Vector2.ZERO, 0.4) 
 	await  tween.finished
 	_is_attacking = false

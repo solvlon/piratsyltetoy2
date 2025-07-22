@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+class_name Player
 
 @export var moveSpeed = 300.0
 @export var dashSpeedMultiplier = 1.0
@@ -78,3 +78,8 @@ func on_hit(force: Vector2) -> void:
 	
 	velocity = force
 	
+
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	if area is FireBall:
+		print("player hit by fireball")

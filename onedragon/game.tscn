@@ -14,8 +14,11 @@ position = Vector2(1561, 1856)
 
 [node name="PlayerCamera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_7jktm")]
 position = Vector2(1278, 612)
-player = NodePath("../Player")
+player = NodePath("../Player/PlayerController")
 
 [node name="Dragon" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_7jktm")]
 position = Vector2(1691, 948)
-player = NodePath("../Player")
+player = NodePath("../Player/PlayerController")
+
+[editable path="Player"]
+[editable path="Player/Weapon2"]

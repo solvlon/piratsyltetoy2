@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://caidnjvy8yfg7"]
+[gd_scene load_steps=20 format=3 uid="uid://caidnjvy8yfg7"]
 
 [ext_resource type="Script" uid="uid://cdwys88ip8t7j" path="res://Player/player.gd" id="1_fhl08"]
 [ext_resource type="Texture2D" uid="uid://cl530wg523wio" path="res://assets/tiny-dungon/tilemap.png" id="2_btcbx"]
@@ -229,6 +229,8 @@ scale_max = 0.05
 anim_speed_min = 1.0
 anim_speed_max = 1.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_fhl08"]
+
 [node name="Player" type="Node2D"]
 script = ExtResource("1_fhl08")
 
@@ -274,6 +276,11 @@ texture = ExtResource("4_k53q1")
 explosiveness = 0.64
 process_material = SubResource("ParticleProcessMaterial_vtle1")
 
+[node name="Hitbox" type="Area2D" parent="PlayerController"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerController/Hitbox"]
+shape = SubResource("CircleShape2D_fhl08")
+
 [node name="Weapon" parent="." node_paths=PackedStringArray("player", "attach") instance=ExtResource("4_gwnis")]
 position = Vector2(23, 0)
 player = NodePath("../PlayerController")
@@ -288,5 +295,7 @@ FOLLOW_VEL_OFFSET = 0.01
 [node name="WeaponSprite" parent="Weapon2" index="0"]
 scale = Vector2(0.75, 0.75)
 region_rect = Rect2(192, 256, 32, 32)
+
+[connection signal="area_entered" from="PlayerController/Hitbox" to="PlayerController" method="_on_hitbox_area_entered"]
 
 [editable path="Weapon2"]

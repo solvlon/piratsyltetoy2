@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=3 uid="uid://t32ctf0flah5"]
+
+[ext_resource type="Texture2D" uid="uid://bvo0t2uk1febt" path="res://icon.svg" id="1_ao587"]
+[ext_resource type="Script" uid="uid://brhmfmbiyjuho" path="res://Dragon/fireball.gd" id="1_wow0l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wow0l"]
+radius = 65.0
+
+[sub_resource type="Gradient" id="Gradient_wow0l"]
+offsets = PackedFloat32Array(0, 0.00909091, 0.0181818, 0.345455, 0.609091, 1)
+colors = PackedColorArray(0.109804, 0, 0.866667, 0, 0.802178, 0.144626, 0.219929, 1, 0.673465, 0, 0.0830874, 1, 0.665151, 0.548834, 0.135018, 1, 0.722524, 0.225351, 0.248953, 0.597222, 0.233925, 0.233925, 0.233925, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_y8ud8"]
+gradient = SubResource("Gradient_wow0l")
+
+[sub_resource type="Curve" id="Curve_cdfo4"]
+_data = [Vector2(0, 0.662921), 0.0, 0.0, 0, 0, Vector2(0.0882353, 0.0224719), 0.0, 0.0, 0, 0, Vector2(0.220588, 0.224719), 0.0, 0.0, 0, 0, Vector2(1, 0.11236), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_xbyeo"]
+curve = SubResource("Curve_cdfo4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u54wr"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_xbyeo")
+color_ramp = SubResource("GradientTexture1D_y8ud8")
+
+[node name="Fireball" type="Area2D"]
+script = ExtResource("1_wow0l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wow0l")
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_ao587")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 300
+texture = ExtResource("1_ao587")
+lifetime = 3.0
+process_material = SubResource("ParticleProcessMaterial_u54wr")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]
