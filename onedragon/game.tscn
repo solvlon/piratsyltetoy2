@@ -1,24 +1,33 @@
-[gd_scene load_steps=5 format=3 uid="uid://ov8pcp2t75av"]
+[gd_scene load_steps=7 format=3 uid="uid://ov8pcp2t75av"]
 
 [ext_resource type="PackedScene" uid="uid://caidnjvy8yfg7" path="res://Player/player.tscn" id="2_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://daoaagl7kep0v" path="res://Camera/player_camera.tscn" id="3_7jktm"]
 [ext_resource type="PackedScene" uid="uid://b6mnbbiykjeex" path="res://Map/map.tscn" id="4_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://q3m8am276760" path="res://Dragon/dragon.tscn" id="5_7jktm"]
+[ext_resource type="PackedScene" uid="uid://bqqfigd4njdv4" path="res://Pickup/PickupItem.tscn" id="5_ryrav"]
+[ext_resource type="Script" uid="uid://dug8ii2rk4e4a" path="res://health_label.gd" id="6_ryrav"]
 
 [node name="Game" type="Node"]
 
 [node name="Map" parent="." instance=ExtResource("4_fc0e3")]
 
-[node name="Player" parent="." instance=ExtResource("2_fc0e3")]
-position = Vector2(1561, 1856)
-
 [node name="PlayerCamera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_7jktm")]
 position = Vector2(1278, 612)
-player = NodePath("../Player/PlayerController")
+player = NodePath("../Player")
 
 [node name="Dragon" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_7jktm")]
 position = Vector2(1691, 948)
-player = NodePath("../Player/PlayerController")
+player = NodePath("../Player")
 
-[editable path="Player"]
-[editable path="Player/Weapon2"]
+[node name="Player" parent="." instance=ExtResource("2_fc0e3")]
+position = Vector2(1561, 1856)
+
+[node name="Area2D" parent="." instance=ExtResource("5_ryrav")]
+position = Vector2(1096, 1768)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthLabel" type="RichTextLabel" parent="CanvasLayer"]
+offset_right = 293.0
+offset_bottom = 40.0
+script = ExtResource("6_ryrav")
