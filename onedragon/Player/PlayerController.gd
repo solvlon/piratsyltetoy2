@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+
 @export var moveSpeed = 300.0
 @export var dashSpeedMultiplier = 1.0
 @export var dashRecoveryTime = 1.0

@@ -1,5 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://caidnjvy8yfg7"]
+[gd_scene load_steps=19 format=3 uid="uid://caidnjvy8yfg7"]
 
+[ext_resource type="Script" uid="uid://cdwys88ip8t7j" path="res://Player/player.gd" id="1_fhl08"]
 [ext_resource type="Texture2D" uid="uid://cl530wg523wio" path="res://assets/tiny-dungon/tilemap.png" id="2_btcbx"]
 [ext_resource type="Script" uid="uid://c76olrrqrua71" path="res://Player/PlayerController.gd" id="2_gwnis"]
 [ext_resource type="Shader" uid="uid://b6cvhsu7eivt3" path="res://Player/hittable.gdshader" id="2_k53q1"]
@@ -16,6 +17,33 @@ atlas = ExtResource("2_btcbx")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k53q1"]
 size = Vector2(32, 32)
+
+[sub_resource type="Animation" id="Animation_fhl08"]
+resource_name = "Dash"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:dashSpeedMultiplier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 3.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Dust:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="Animation" id="Animation_k53q1"]
 resource_name = "Hit"
@@ -163,33 +191,6 @@ tracks/0/keys = {
 "values": [0.0, -0.261799, 0.261799, 0.0]
 }
 
-[sub_resource type="Animation" id="Animation_fhl08"]
-resource_name = "Dash"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:dashSpeedMultiplier")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.266667, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [1.0, 3.0, 1.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Dust:emitting")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gwnis"]
 _data = {
 &"Dash": SubResource("Animation_fhl08"),
@@ -229,6 +230,7 @@ anim_speed_min = 1.0
 anim_speed_max = 1.0
 
 [node name="Player" type="Node2D"]
+script = ExtResource("1_fhl08")
 
 [node name="PlayerController" type="CharacterBody2D" parent="."]
 script = ExtResource("2_gwnis")

@@ -10,10 +10,11 @@
 [node name="Map" parent="." instance=ExtResource("4_fc0e3")]
 
 [node name="Player" parent="." instance=ExtResource("2_fc0e3")]
-position = Vector2(1563, 1899)
+position = Vector2(1561, 1856)
 
-[node name="PlayerCamera" parent="." instance=ExtResource("3_7jktm")]
+[node name="PlayerCamera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_7jktm")]
 position = Vector2(1278, 612)
+player = NodePath("../Player")
 
 [node name="Dragon" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_7jktm")]
 position = Vector2(1691, 948)
