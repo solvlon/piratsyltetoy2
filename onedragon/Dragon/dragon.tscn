@@ -1,11 +1,17 @@
-[gd_scene load_steps=25 format=3 uid="uid://q3m8am276760"]
+[gd_scene load_steps=29 format=3 uid="uid://q3m8am276760"]
 
 [ext_resource type="Script" uid="uid://chrscg7be4ah2" path="res://Dragon/dragon.gd" id="1_80mar"]
 [ext_resource type="Texture2D" uid="uid://cl530wg523wio" path="res://assets/tiny-dungon/tilemap.png" id="1_wq5gb"]
+[ext_resource type="Shader" uid="uid://b6cvhsu7eivt3" path="res://Player/hittable.gdshader" id="2_kar7i"]
 [ext_resource type="Texture2D" uid="uid://bvo0t2uk1febt" path="res://icon.svg" id="3_pl6bp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_80mar"]
 radius = 55.0818
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cjlra"]
+shader = ExtResource("2_kar7i")
+shader_parameter/flash_color = Color(1, 0, 0, 1)
+shader_parameter/flash_value = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u2dun"]
 radius = 482.009
@@ -129,6 +135,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%Sprite2D:material:shader_parameter/flash_value")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
 
 [sub_resource type="Animation" id="Animation_pl6bp"]
 resource_name = "TileSwipeAttack"
@@ -170,13 +188,49 @@ tracks/2/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_u2dun"]
+resource_name = "Hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Sprite2D:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_cjlra"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Sprite2D:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cjlra"]
 _data = {
+&"Hit": SubResource("Animation_u2dun"),
+&"Idle": SubResource("Animation_cjlra"),
 &"RESET": SubResource("Animation_kar7i"),
 &"TileSwipeAttack": SubResource("Animation_pl6bp")
 }
 
 [node name="Dragon" type="CharacterBody2D"]
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("1_80mar")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -184,6 +238,7 @@ shape = SubResource("CircleShape2D_80mar")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_cjlra")
 scale = Vector2(3, 3)
 texture = ExtResource("1_wq5gb")
 region_enabled = true
@@ -201,12 +256,14 @@ unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FollowArea"]
 shape = SubResource("CircleShape2D_u2dun")
+debug_color = Color(0.98905, 0, 0.294991, 0.42)
 
 [node name="FireAttackArea" type="Area2D" parent="."]
 unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FireAttackArea"]
 shape = SubResource("CircleShape2D_pl6bp")
+debug_color = Color(0.791506, 0.427937, 0, 0.42)
 
 [node name="TileSwipeArea" type="Area2D" parent="."]
 unique_name_in_owner = true
@@ -252,3 +309,4 @@ root_node = NodePath("../AttackCooldown")
 libraries = {
 &"": SubResource("AnimationLibrary_cjlra")
 }
+autoplay = "Idle"
