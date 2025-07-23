@@ -9,6 +9,8 @@ const FIREBALL = preload("res://Dragon/fireball.tscn")
 
 
 @export var player : Player
+@export var maxHealth = 1000
+var health
 
 var _is_attacking = false
 var _spawn_position
@@ -26,6 +28,7 @@ var _spawn_position
 @onready var follow_area: Area2D = %FollowArea
 
 func _ready() -> void:
+	health = maxHealth
 	attack_cooldown.timeout.connect(_on_attack_cooldown_timeout)
 	_spawn_position = global_position
 
@@ -83,4 +86,7 @@ func _claw_attack():
 	await  tween.finished
 	_is_attacking = false
 	
-	
+func on_hit(hitpoints, force):
+	health -= hitpoints
+	print(health)
+	animation_player.play("Hit")

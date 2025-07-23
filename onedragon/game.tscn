@@ -1,11 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://ov8pcp2t75av"]
+[gd_scene load_steps=10 format=3 uid="uid://ov8pcp2t75av"]
 
 [ext_resource type="PackedScene" uid="uid://caidnjvy8yfg7" path="res://Player/player.tscn" id="2_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://daoaagl7kep0v" path="res://Camera/player_camera.tscn" id="3_7jktm"]
 [ext_resource type="PackedScene" uid="uid://b6mnbbiykjeex" path="res://Map/map.tscn" id="4_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://q3m8am276760" path="res://Dragon/dragon.tscn" id="5_7jktm"]
 [ext_resource type="PackedScene" uid="uid://bqqfigd4njdv4" path="res://Pickup/PickupItem.tscn" id="5_ryrav"]
-[ext_resource type="Script" uid="uid://dug8ii2rk4e4a" path="res://health_label.gd" id="6_ryrav"]
+[ext_resource type="Script" uid="uid://ckl05ly2j5xb4" path="res://Dragon/dragon_health_bar.gd" id="7_eow3j"]
+[ext_resource type="Script" uid="uid://b6utbnp0p6xm7" path="res://Player/player_health_bar.gd" id="7_j5wjh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j5wjh"]
+bg_color = Color(0.791881, 0, 0.107835, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eow3j"]
+bg_color = Color(0, 0.619058, 0.0899855, 1)
 
 [node name="Game" type="Node"]
 
@@ -18,6 +25,7 @@ player = NodePath("../Player")
 [node name="Dragon" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_7jktm")]
 position = Vector2(1691, 948)
 player = NodePath("../Player")
+maxHealth = 100
 
 [node name="Player" parent="." instance=ExtResource("2_fc0e3")]
 position = Vector2(1561, 1856)
@@ -27,7 +35,37 @@ position = Vector2(1096, 1768)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HealthLabel" type="RichTextLabel" parent="CanvasLayer"]
-offset_right = 293.0
-offset_bottom = 40.0
-script = ExtResource("6_ryrav")
+[node name="DragonHealthBar" type="ProgressBar" parent="CanvasLayer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 27.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+theme_override_styles/fill = SubResource("StyleBoxFlat_j5wjh")
+max_value = 1.0
+value = 1.0
+script = ExtResource("7_eow3j")
+
+[node name="PlayerHealthBar" type="ProgressBar" parent="CanvasLayer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -27.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/fill = SubResource("StyleBoxFlat_eow3j")
+show_percentage = false
+script = ExtResource("7_j5wjh")
+
+[node name="HealthLabel" type="RichTextLabel" parent="CanvasLayer/PlayerHealthBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "102/95"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -3,6 +3,7 @@ extends Node2D
 @export var player: CharacterBody2D
 @export var attach: Node2D
 
+@export var POWER = 10
 @export var FOLLOW_SPEED = 40
 @export var ATTACK_SPEED = 0.5
 @export var ATTACK_SPEED_TRAVEL = 5
@@ -47,3 +48,4 @@ func attack() -> void:
 func _on_touch(body) -> void:
 	hitParticle.restart()
 	hitParticle.emitting = true
+	body.on_hit(POWER, Vector2.ZERO)
