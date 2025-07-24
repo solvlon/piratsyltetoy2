@@ -1,22 +1,131 @@
-[gd_scene load_steps=20 format=3 uid="uid://caidnjvy8yfg7"]
+[gd_scene load_steps=32 format=3 uid="uid://caidnjvy8yfg7"]
 
-[ext_resource type="Script" uid="uid://cdwys88ip8t7j" path="res://Player/player.gd" id="1_fhl08"]
-[ext_resource type="Texture2D" uid="uid://cl530wg523wio" path="res://assets/tiny-dungon/tilemap.png" id="2_btcbx"]
+[ext_resource type="Script" uid="uid://cdwys88ip8t7j" path="res://Player/player.gd" id="1_n471f"]
 [ext_resource type="Script" uid="uid://c76olrrqrua71" path="res://Player/PlayerController.gd" id="2_gwnis"]
-[ext_resource type="Shader" uid="uid://b6cvhsu7eivt3" path="res://Player/hittable.gdshader" id="2_k53q1"]
+[ext_resource type="Texture2D" uid="uid://c5mvcg1nma0kj" path="res://assets/character/back1.png" id="2_o28un"]
+[ext_resource type="Texture2D" uid="uid://i0j35gcogwdk" path="res://assets/character/forward1.png" id="3_n471f"]
+[ext_resource type="Texture2D" uid="uid://0eo26ahlw3cj" path="res://assets/character/l2.png" id="4_7emwf"]
 [ext_resource type="PackedScene" uid="uid://k0jnn526oyw" path="res://Player/Weapon/weapon.tscn" id="4_gwnis"]
 [ext_resource type="Texture2D" uid="uid://pclb6cfj5ajg" path="res://assets/particles/SmokePuffParticleSheet.png" id="4_k53q1"]
+[ext_resource type="Texture2D" uid="uid://b5gfvqao1ari" path="res://assets/character/r1.png" id="5_hshwv"]
+[ext_resource type="Texture2D" uid="uid://c5dl1wu4pqmvv" path="res://assets/character/back2.png" id="6_gpjlu"]
+[ext_resource type="Texture2D" uid="uid://dw22htwhri6j8" path="res://assets/character/back3.png" id="7_8mwp6"]
+[ext_resource type="Texture2D" uid="uid://cf8tsheaxjpdl" path="res://assets/character/back4.png" id="8_qemgg"]
+[ext_resource type="Texture2D" uid="uid://h4gandlyb3tq" path="res://assets/character/forward2.png" id="9_8viyr"]
+[ext_resource type="Texture2D" uid="uid://dgmicefnx4pn0" path="res://assets/character/forward3.png" id="10_sm0op"]
+[ext_resource type="Texture2D" uid="uid://bdngwedsx8skh" path="res://assets/character/forward4.png" id="11_76lrf"]
+[ext_resource type="Texture2D" uid="uid://bvykhuuewnlhf" path="res://assets/character/l1.png" id="12_efx54"]
+[ext_resource type="Texture2D" uid="uid://cmlhwicmtmpe2" path="res://assets/character/l3.png" id="13_755ss"]
+[ext_resource type="Texture2D" uid="uid://5pe7f7gjr3p1" path="res://assets/character/l4.png" id="14_bbimk"]
+[ext_resource type="Texture2D" uid="uid://bu4bpnw3ax7x6" path="res://assets/character/r2.png" id="15_m0h3t"]
+[ext_resource type="Texture2D" uid="uid://cgo5j2db237x4" path="res://assets/character/r3.png" id="16_i4o1l"]
+[ext_resource type="Texture2D" uid="uid://blwfgj403lvd6" path="res://assets/character/r4.png" id="17_j2n6q"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fhl08"]
-shader = ExtResource("2_k53q1")
-shader_parameter/flash_color = Color(1, 0, 0, 1)
-shader_parameter/flash_value = 0.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gwnis"]
-atlas = ExtResource("2_btcbx")
+[sub_resource type="SpriteFrames" id="SpriteFrames_c6x0f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_o28un")
+}],
+"loop": true,
+"name": &"Idle_B",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_n471f")
+}],
+"loop": true,
+"name": &"Idle_F",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_7emwf")
+}],
+"loop": true,
+"name": &"Idle_L",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_hshwv")
+}],
+"loop": true,
+"name": &"Idle_R",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_o28un")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_gpjlu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8mwp6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qemgg")
+}],
+"loop": true,
+"name": &"Run_B",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_n471f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_8viyr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_sm0op")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_76lrf")
+}],
+"loop": true,
+"name": &"Run_F",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_efx54")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7emwf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_755ss")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_bbimk")
+}],
+"loop": true,
+"name": &"Run_L",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_hshwv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_m0h3t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_i4o1l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_j2n6q")
+}],
+"loop": true,
+"name": &"Run_R",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k53q1"]
-size = Vector2(32, 32)
+size = Vector2(19, 28)
 
 [sub_resource type="Animation" id="Animation_fhl08"]
 resource_name = "Dash"
@@ -47,128 +156,32 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_k53q1"]
 resource_name = "Hit"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0666667, 0.133333, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -3.83), Vector2(0, 0), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.133333, 0.833333, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, -1.5708, -1.5708, 0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:material:shader_parameter/flash_value")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.133333, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, 1.0, 0.0]
-}
 
 [sub_resource type="Animation" id="Animation_4ntmi"]
 resource_name = "Idle"
 loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -1), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
 
 [sub_resource type="Animation" id="Animation_btcbx"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/path = NodePath(".:dashSpeedMultiplier")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [1.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/path = NodePath("Dust:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:material:shader_parameter/flash_value")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:dashSpeedMultiplier")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Dust:emitting")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -178,18 +191,6 @@ tracks/4/keys = {
 [sub_resource type="Animation" id="Animation_gwnis"]
 resource_name = "Run"
 loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.666, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, -0.261799, 0.261799, 0.0]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gwnis"]
 _data = {
@@ -229,29 +230,27 @@ scale_max = 0.05
 anim_speed_min = 1.0
 anim_speed_max = 1.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_fhl08"]
-
 [node name="Player" type="Node2D"]
-script = ExtResource("1_fhl08")
+script = ExtResource("1_n471f")
 
 [node name="PlayerController" type="CharacterBody2D" parent="."]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("2_gwnis")
 
-[node name="Sprite2D" type="Sprite2D" parent="PlayerController"]
-material = SubResource("ShaderMaterial_fhl08")
-texture = SubResource("AtlasTexture_gwnis")
-region_enabled = true
-region_rect = Rect2(96, 224, 32, 32)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PlayerController"]
+position = Vector2(0, -1)
+sprite_frames = SubResource("SpriteFrames_c6x0f")
+animation = &"Idle_F"
 
-[node name="WeaponAttach" type="Marker2D" parent="PlayerController/Sprite2D"]
-position = Vector2(12, 8)
+[node name="WeaponAttach" type="Marker2D" parent="PlayerController/AnimatedSprite2D"]
+position = Vector2(10, 5)
 
-[node name="WeaponAttach2" type="Marker2D" parent="PlayerController/Sprite2D"]
-position = Vector2(-12, 8)
+[node name="WeaponAttach2" type="Marker2D" parent="PlayerController/AnimatedSprite2D"]
+position = Vector2(-13, 5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerController"]
+position = Vector2(-1.5, 2)
 shape = SubResource("RectangleShape2D_k53q1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerController"]
@@ -278,26 +277,19 @@ texture = ExtResource("4_k53q1")
 explosiveness = 0.64
 process_material = SubResource("ParticleProcessMaterial_vtle1")
 
-[node name="Hitbox" type="Area2D" parent="PlayerController"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerController/Hitbox"]
-shape = SubResource("CircleShape2D_fhl08")
-
 [node name="Weapon" parent="." node_paths=PackedStringArray("player", "attach") instance=ExtResource("4_gwnis")]
 position = Vector2(23, 0)
 player = NodePath("../PlayerController")
-attach = NodePath("../PlayerController/Sprite2D/WeaponAttach")
+attach = NodePath("../PlayerController/AnimatedSprite2D/WeaponAttach")
 
 [node name="Weapon2" parent="." node_paths=PackedStringArray("player", "attach") instance=ExtResource("4_gwnis")]
 position = Vector2(-27, 0)
 player = NodePath("../PlayerController")
-attach = NodePath("../PlayerController/Sprite2D/WeaponAttach2")
+attach = NodePath("../PlayerController/AnimatedSprite2D/WeaponAttach2")
 FOLLOW_VEL_OFFSET = 0.01
 
 [node name="WeaponSprite" parent="Weapon2" index="0"]
 scale = Vector2(0.75, 0.75)
 region_rect = Rect2(192, 256, 32, 32)
-
-[connection signal="area_entered" from="PlayerController/Hitbox" to="PlayerController" method="_on_hitbox_area_entered"]
 
 [editable path="Weapon2"]

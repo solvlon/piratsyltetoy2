@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://k0jnn526oyw"]
 
 [ext_resource type="Script" uid="uid://cc1bpigvgwg2m" path="res://Player/CharacterWeapon.gd" id="1_tj4no"]
-[ext_resource type="Texture2D" uid="uid://cl530wg523wio" path="res://assets/tiny-dungon/tilemap.png" id="2_87rp5"]
+[ext_resource type="Texture2D" uid="uid://b636wksbchtes" path="res://assets/tilemapandsprites.png" id="2_tj4no"]
 
 [sub_resource type="Animation" id="Animation_tj4no"]
 resource_name = "Attack"
@@ -101,9 +101,9 @@ script = ExtResource("1_tj4no")
 [node name="WeaponSprite" type="Sprite2D" parent="."]
 rotation = 0.436332
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_87rp5")
+texture = ExtResource("2_tj4no")
 region_enabled = true
-region_rect = Rect2(288, 288, 32, 32)
+region_rect = Rect2(224, 288, 32, 32)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
