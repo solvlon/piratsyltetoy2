@@ -9,6 +9,8 @@ const FIREBALL = preload("res://Dragon/fireball.tscn")
 
 
 @export var player : Player
+@export var maxHealth = 1000
+var health
 
 var _is_attacking = false
 var _spawn_position
@@ -26,13 +28,14 @@ var _spawn_position
 @onready var follow_area: Area2D = %FollowArea
 
 func _ready() -> void:
+	health = maxHealth
 	attack_cooldown.timeout.connect(_on_attack_cooldown_timeout)
 	_spawn_position = global_position
 
 func _physics_process(_delta: float) -> void:
 	
-	if follow_area.get_overlapping_bodies().has(player):
-		navigation_agent_2d.target_position = player.global_position
+	if follow_area.get_overlapping_bodies().has(player.controller):
+		navigation_agent_2d.target_position = player.controller.global_position
 	else:
 		navigation_agent_2d.target_position = _spawn_position
 	
@@ -48,11 +51,11 @@ func _physics_process(_delta: float) -> void:
 
 func _on_attack_cooldown_timeout():
 	
-	if claw_attack_area.get_overlapping_bodies().has(player):
+	if claw_attack_area.get_overlapping_bodies().has(player.controller):
 		_claw_attack()
-	elif tile_swipe_area.get_overlapping_bodies().has(player):
+	elif tile_swipe_area.get_overlapping_bodies().has(player.controller):
 		_tile_swipe_attack()
-	elif fire_attack_area.get_overlapping_bodies().has(player):
+	elif fire_attack_area.get_overlapping_bodies().has(player.controller):
 		_fire_attack()	
 	
 	attack_cooldown.start(randf_range(ATTACK_MIN_WAIT_TIME,ATTACK_MAX_WAIT_TIME))
@@ -63,9 +66,9 @@ func _fire_attack():
 	await fire_pre_particles.finished
 	fire_particles.emitting = true
 	var fireball : FireBall = FIREBALL.instantiate()
-	fireball.move_direction = position.direction_to(player.global_position)
+	fireball.move_direction = position.direction_to(player.controller.global_position)
 	add_child(fireball)
-	fire_particles.rotation = position.direction_to(player.global_position).angle()
+	fire_particles.rotation = position.direction_to(player.controller.global_position).angle()
 	await  fire_particles.finished
 	_is_attacking = false
 
@@ -83,4 +86,7 @@ func _claw_attack():
 	await  tween.finished
 	_is_attacking = false
 	
-	
+func on_hit(hitpoints, force):
+	health -= hitpoints
+	print(health)
+	animation_player.play("Hit")

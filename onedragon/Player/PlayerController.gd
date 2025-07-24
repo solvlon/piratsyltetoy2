@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name Player
+class_name PlayerController
 
 @export var moveSpeed = 300.0
 @export var dashSpeedMultiplier = 1.0
@@ -10,6 +10,7 @@ class_name Player
 @onready var hitParticleEffect = $Blood
 @onready var dustParticleEffect = $Dust
 @onready var weapon1 = $"../Weapon"
+@onready var player = $"../../Player"
 
 var _canDash = true
 
@@ -75,7 +76,6 @@ func on_hit(force: Vector2) -> void:
 	animationPlayer.play("Hit")
 	hitParticleEffect.restart()
 	hitParticleEffect.emitting = true
-	
 	velocity = force
 	
 
