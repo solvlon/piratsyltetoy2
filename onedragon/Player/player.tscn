@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://caidnjvy8yfg7"]
+[gd_scene load_steps=32 format=3 uid="uid://caidnjvy8yfg7"]
 
 [ext_resource type="Script" uid="uid://cdwys88ip8t7j" path="res://Player/player.gd" id="1_n471f"]
 [ext_resource type="Script" uid="uid://c76olrrqrua71" path="res://Player/PlayerController.gd" id="2_gwnis"]
@@ -125,7 +125,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k53q1"]
-size = Vector2(19, 32)
+size = Vector2(19, 28)
 
 [sub_resource type="Animation" id="Animation_fhl08"]
 resource_name = "Dash"
@@ -230,8 +230,6 @@ scale_max = 0.05
 anim_speed_min = 1.0
 anim_speed_max = 1.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n471f"]
-
 [node name="Player" type="Node2D"]
 script = ExtResource("1_n471f")
 
@@ -252,7 +250,7 @@ position = Vector2(10, 5)
 position = Vector2(-13, 5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerController"]
-position = Vector2(-1.5, 0)
+position = Vector2(-1.5, 2)
 shape = SubResource("RectangleShape2D_k53q1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerController"]
@@ -279,11 +277,6 @@ texture = ExtResource("4_k53q1")
 explosiveness = 0.64
 process_material = SubResource("ParticleProcessMaterial_vtle1")
 
-[node name="Hitbox" type="Area2D" parent="PlayerController"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerController/Hitbox"]
-shape = SubResource("CapsuleShape2D_n471f")
-
 [node name="Weapon" parent="." node_paths=PackedStringArray("player", "attach") instance=ExtResource("4_gwnis")]
 position = Vector2(23, 0)
 player = NodePath("../PlayerController")
@@ -298,7 +291,5 @@ FOLLOW_VEL_OFFSET = 0.01
 [node name="WeaponSprite" parent="Weapon2" index="0"]
 scale = Vector2(0.75, 0.75)
 region_rect = Rect2(192, 256, 32, 32)
-
-[connection signal="area_entered" from="PlayerController/Hitbox" to="PlayerController" method="_on_hitbox_area_entered"]
 
 [editable path="Weapon2"]

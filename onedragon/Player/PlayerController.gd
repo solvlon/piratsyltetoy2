@@ -68,7 +68,6 @@ func dash() -> void:
 	dustParticleEffect.restart()
 	await get_tree().create_timer(dashRecoveryTime).timeout
 	_canDash = true
-	
 
 func dash_move() -> void:
 	velocity = velocity.normalized() * moveSpeed * dashSpeedMultiplier
@@ -82,9 +81,3 @@ func on_hit(force: Vector2) -> void:
 	hitParticleEffect.restart()
 	hitParticleEffect.emitting = true
 	velocity = force
-	
-
-
-func _on_hitbox_area_entered(area: Area2D) -> void:
-	if area is FireBall:
-		print("player hit by fireball")
