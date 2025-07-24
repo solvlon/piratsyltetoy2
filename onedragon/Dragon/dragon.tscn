@@ -1,9 +1,27 @@
-[gd_scene load_steps=29 format=3 uid="uid://q3m8am276760"]
+[gd_scene load_steps=48 format=3 uid="uid://q3m8am276760"]
 
 [ext_resource type="Script" uid="uid://chrscg7be4ah2" path="res://Dragon/dragon.gd" id="1_80mar"]
 [ext_resource type="Texture2D" uid="uid://cl530wg523wio" path="res://assets/tiny-dungon/tilemap.png" id="1_wq5gb"]
 [ext_resource type="Shader" uid="uid://b6cvhsu7eivt3" path="res://Player/hittable.gdshader" id="2_kar7i"]
 [ext_resource type="Texture2D" uid="uid://bvo0t2uk1febt" path="res://icon.svg" id="3_pl6bp"]
+[ext_resource type="Texture2D" uid="uid://cj3m7ea5l8g60" path="res://assets/walk_and_attack/f1.png" id="4_qatnp"]
+[ext_resource type="Texture2D" uid="uid://bgk0j6pwadwj2" path="res://assets/walk_and_attack/f2.png" id="5_d5a0m"]
+[ext_resource type="Texture2D" uid="uid://dukp31tyjd1o0" path="res://assets/walk_and_attack/f3.png" id="6_i35l8"]
+[ext_resource type="Texture2D" uid="uid://c1ma4klft6r5b" path="res://assets/walk_and_attack/f4.png" id="7_y278k"]
+[ext_resource type="Texture2D" uid="uid://bpjndcmangbxw" path="res://assets/walk_and_attack/f5.png" id="8_ukke7"]
+[ext_resource type="Texture2D" uid="uid://b7ui4swvuv1hk" path="res://assets/walk_and_attack/1.png" id="9_gvbe5"]
+[ext_resource type="Texture2D" uid="uid://27pd5ogljhng" path="res://assets/walk_and_attack/2.png" id="10_3hyc2"]
+[ext_resource type="Texture2D" uid="uid://cyguh1amdx8rv" path="res://assets/walk_and_attack/3.png" id="11_fuy3p"]
+[ext_resource type="Texture2D" uid="uid://yb4s85vlukrn" path="res://assets/walk_and_attack/4.png" id="12_g7psj"]
+[ext_resource type="Texture2D" uid="uid://cb0l2uj1crhjc" path="res://assets/walk_and_attack/5.png" id="13_yc10c"]
+[ext_resource type="Texture2D" uid="uid://p84n13w2bfpg" path="res://assets/walk_and_attack/6.png" id="14_13kkn"]
+[ext_resource type="Texture2D" uid="uid://dbjr5sbeo43xw" path="res://assets/walk_and_attack/7.png" id="15_em4ju"]
+[ext_resource type="Texture2D" uid="uid://cer0kypedcfy8" path="res://assets/walk_and_attack/8.png" id="16_ipxbw"]
+[ext_resource type="Texture2D" uid="uid://duoyusni7fpqk" path="res://assets/walk_and_attack/9.png" id="17_nsle7"]
+[ext_resource type="Texture2D" uid="uid://dfmfuowaxp74q" path="res://assets/walk_and_attack/b1.png" id="18_cmt6j"]
+[ext_resource type="Texture2D" uid="uid://q025xoulx3j" path="res://assets/walk_and_attack/b2.png" id="19_kelsp"]
+[ext_resource type="Texture2D" uid="uid://cwnewiajraod" path="res://assets/walk_and_attack/b3.png" id="20_2nskc"]
+[ext_resource type="Texture2D" uid="uid://c8tshfa4h4mym" path="res://assets/walk_and_attack/b4.png" id="21_xfcr6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_80mar"]
 radius = 55.0818
@@ -11,7 +29,84 @@ radius = 55.0818
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cjlra"]
 shader = ExtResource("2_kar7i")
 shader_parameter/flash_color = Color(1, 0, 0, 1)
-shader_parameter/flash_value = 1.0
+shader_parameter/flash_value = 0.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8wxud"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_qatnp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_d5a0m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_i35l8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_y278k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ukke7")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_gvbe5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_3hyc2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_fuy3p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_g7psj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_yc10c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_13kkn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_em4ju")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ipxbw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_nsle7")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_cmt6j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_kelsp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_2nskc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_xfcr6")
+}],
+"loop": true,
+"name": &"walk_up",
+"speed": 10.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u2dun"]
 radius = 482.009
@@ -85,6 +180,50 @@ initial_velocity_max = 1000.0
 gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_kar7i")
 
+[sub_resource type="Animation" id="Animation_u2dun"]
+resource_name = "Hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("%Sprite2D:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0.0, 1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AnimatedSprite2D:material:shader_parameter/flash_value")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_cjlra"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Sprite2D:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_kar7i"]
 length = 0.001
 tracks/0/type = "value"
@@ -147,13 +286,25 @@ tracks/4/keys = {
 "update": 0,
 "values": [1.0]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../AnimatedSprite2D:material:shader_parameter/flash_value")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_pl6bp"]
 resource_name = "TileSwipeAttack"
 length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/path = NodePath("../Sprite2D:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -188,38 +339,6 @@ tracks/2/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_u2dun"]
-resource_name = "Hit"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("%Sprite2D:material:shader_parameter/flash_value")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0.0, 1.0, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_cjlra"]
-resource_name = "Idle"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("%Sprite2D:material:shader_parameter/flash_value")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cjlra"]
 _data = {
 &"Hit": SubResource("Animation_u2dun"),
@@ -238,11 +357,34 @@ shape = SubResource("CircleShape2D_80mar")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 material = SubResource("ShaderMaterial_cjlra")
 scale = Vector2(3, 3)
 texture = ExtResource("1_wq5gb")
 region_enabled = true
 region_rect = Rect2(61.2566, 287.552, 35.5167, 31.4186)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_cjlra")
+sprite_frames = SubResource("SpriteFrames_8wxud")
+animation = &"walk_up"
+frame_progress = 0.00330189
+
+[node name="fireballSpawn_left" type="Node2D" parent="AnimatedSprite2D"]
+unique_name_in_owner = true
+position = Vector2(-51, -4)
+
+[node name="fireballSpawn_right" type="Node2D" parent="AnimatedSprite2D"]
+unique_name_in_owner = true
+position = Vector2(51, -4)
+
+[node name="fireballSpawn_up" type="Node2D" parent="AnimatedSprite2D"]
+unique_name_in_owner = true
+position = Vector2(1, -25)
+
+[node name="fireballSpawn_down" type="Node2D" parent="AnimatedSprite2D"]
+unique_name_in_owner = true
+position = Vector2(0, -14)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 unique_name_in_owner = true
@@ -289,6 +431,7 @@ process_material = SubResource("ParticleProcessMaterial_1ryjn")
 
 [node name="FirePreParticles" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
+visible = false
 emitting = false
 amount = 10
 texture = ExtResource("3_pl6bp")
