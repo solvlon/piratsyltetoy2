@@ -6,13 +6,14 @@ class_name PlayerController
 @export var dashRecoveryTime = 1.0
 @export var pushRecovery = 10.0
 @onready var animationPlayer = $AnimationPlayer
-@onready var sprite = $Sprite2D
+@onready var sprite = $AnimatedSprite2D
 @onready var hitParticleEffect = $Blood
 @onready var dustParticleEffect = $Dust
 @onready var weapon1 = $"../Weapon"
 @onready var player = $"../../Player"
 
 var _canDash = true
+var _animDir = "_F"
 
 func _physics_process(delta: float) -> void:
 	
@@ -35,6 +36,14 @@ func manage_motion() -> void:
 		return
 	
 	var direction = Input.get_vector("left", "right", "up", "down")
+	if direction.x > 0:
+		_animDir = "_R"
+	elif direction.x < 0:
+		_animDir = "_L"
+	if direction.y > 0:
+		_animDir = "_F"
+	elif direction.y < 0:
+		_animDir = "_B"
 	
 	if direction:
 		if _canDash && Input.is_action_just_pressed("dash"):
@@ -43,19 +52,15 @@ func manage_motion() -> void:
 		# Moving
 		animationPlayer.speed_scale = moveSpeed / 100
 		animationPlayer.play("Run")
+		sprite.play(str("Run", _animDir))
 		velocity = direction * moveSpeed
 	else:
 		# Not moving
 		animationPlayer.speed_scale = 1
 		animationPlayer.play("Idle")
+		sprite.play(str("Idle", _animDir))
 		velocity.x = move_toward(velocity.x, 0, moveSpeed)
 		velocity.y = move_toward(velocity.y, 0, moveSpeed)
-
-	# manage facing direction
-	if direction.x < 0:
-		sprite.flip_h = true
-	if direction.x > 0:
-		sprite.flip_h = false
 
 func dash() -> void:
 	animationPlayer.play("Dash")
