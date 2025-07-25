@@ -9,7 +9,6 @@ class_name PlayerController
 @onready var sprite = $AnimatedSprite2D
 @onready var hitParticleEffect = $Blood
 @onready var dustParticleEffect = $Dust
-@onready var weapon1 = $"../Weapon"
 @onready var player = $"../../Player"
 
 var _canDash = true
@@ -22,10 +21,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, pushRecovery)
 		velocity.y = move_toward(velocity.y, 0, pushRecovery)
 	else:
-		if Input.is_action_just_pressed("attack1"):
-			attack()
-		else:
-			manage_motion()
+		manage_motion()
 
 	move_and_slide()
 
@@ -63,6 +59,7 @@ func manage_motion() -> void:
 		velocity.y = move_toward(velocity.y, 0, moveSpeed)
 
 func dash() -> void:
+	Globals.play_sound("dash")
 	animationPlayer.play("Dash")
 	_canDash = false
 	dustParticleEffect.restart()
@@ -71,9 +68,6 @@ func dash() -> void:
 
 func dash_move() -> void:
 	velocity = velocity.normalized() * moveSpeed * dashSpeedMultiplier
-
-func attack() -> void:
-	weapon1.attack()
 
 func on_hit(force: Vector2) -> void:
 	animationPlayer.speed_scale = 1
