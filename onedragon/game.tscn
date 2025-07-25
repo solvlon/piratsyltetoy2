@@ -31,6 +31,54 @@ player = NodePath("../Player")
 position = Vector2(1353, 1781)
 objToSpawn = ExtResource("4_iotsf")
 
+[node name="Chest2" parent="." instance=ExtResource("3_mfdv2")]
+position = Vector2(1480, 1738)
+objToSpawn = ExtResource("4_iotsf")
+
+[node name="Chest3" parent="." instance=ExtResource("3_mfdv2")]
+position = Vector2(1619, 1746)
+objToSpawn = ExtResource("4_iotsf")
+
+[node name="Chest4" parent="." instance=ExtResource("3_mfdv2")]
+position = Vector2(1683, 1833)
+objToSpawn = ExtResource("4_iotsf")
+
+[node name="Chest5" parent="." instance=ExtResource("3_mfdv2")]
+position = Vector2(1548, 1797)
+objToSpawn = ExtResource("4_iotsf")
+
+[node name="Chest6" parent="." instance=ExtResource("3_mfdv2")]
+position = Vector2(1403, 1860)
+objToSpawn = ExtResource("4_iotsf")
+
+[node name="Chest7" parent="." instance=ExtResource("3_mfdv2")]
+position = Vector2(1412, 1736)
+objToSpawn = ExtResource("4_iotsf")
+
+[node name="Chest8" parent="." instance=ExtResource("3_mfdv2")]
+position = Vector2(1557, 1714)
+objToSpawn = ExtResource("4_iotsf")
+
+[node name="Chest9" parent="." instance=ExtResource("3_mfdv2")]
+position = Vector2(1656, 1885)
+objToSpawn = ExtResource("4_iotsf")
+
+[node name="Chest10" parent="." instance=ExtResource("3_mfdv2")]
+position = Vector2(1482, 1951)
+objToSpawn = ExtResource("4_iotsf")
+
+[node name="Chest11" parent="." instance=ExtResource("3_mfdv2")]
+position = Vector2(1627, 1942)
+objToSpawn = ExtResource("4_iotsf")
+
+[node name="Chest12" parent="." instance=ExtResource("3_mfdv2")]
+position = Vector2(1361, 1918)
+objToSpawn = ExtResource("4_iotsf")
+
+[node name="Chest13" parent="." instance=ExtResource("3_mfdv2")]
+position = Vector2(1326, 1852)
+objToSpawn = ExtResource("4_iotsf")
+
 [node name="Crate" parent="." instance=ExtResource("7_vef74")]
 position = Vector2(1314, 1776)
 objToSpawn = ExtResource("5_ryrav")

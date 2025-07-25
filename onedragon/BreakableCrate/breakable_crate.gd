@@ -19,6 +19,10 @@ func on_hit(power, force):
 	Globals.play_sound(soundOnOpen)
 	if disableCollisionOnOpen:
 		collisionShape.set_deferred("disabled", true)
+	else:
+		# disable collisions with weapon
+		collision_layer = 32
+		collision_mask = 32
 	var obj = objToSpawn.instantiate()
 	get_parent().add_child(obj)
 	obj.global_position = global_position

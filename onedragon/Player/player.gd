@@ -41,6 +41,12 @@ func up_dash_speed(v) -> void:
 
 func equip(weapon) -> void:
 	print("new weapon!")
+	if weaponAttachements.size() <= weaponList.size():
+		# spawn new weapon attachement
+		var newNode = Node2D.new()
+		weaponAttachementParent.add_child(newNode)
+		newNode.global_position = weaponAttachementParent.global_position + randf_range(15, 15 + weaponList.size()) * Vector2.from_angle(randf_range(0, 2*PI))
+		weaponAttachements.append(newNode)
 	weapon.setup(controller, weaponAttachements[weaponList.size()])
 	weaponList.append(weapon)
 
