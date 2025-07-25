@@ -1,8 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://ov8pcp2t75av"]
+[gd_scene load_steps=14 format=3 uid="uid://ov8pcp2t75av"]
 
 [ext_resource type="PackedScene" uid="uid://caidnjvy8yfg7" path="res://Player/player.tscn" id="2_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://daoaagl7kep0v" path="res://Camera/player_camera.tscn" id="3_7jktm"]
+[ext_resource type="PackedScene" uid="uid://bt3ho1345fdb0" path="res://BreakableCrate/chest.tscn" id="3_mfdv2"]
 [ext_resource type="PackedScene" uid="uid://b6mnbbiykjeex" path="res://Map/map.tscn" id="4_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://b57rdqpd1sjvj" path="res://Player/Weapon/hammer.tscn" id="4_iotsf"]
 [ext_resource type="PackedScene" uid="uid://q3m8am276760" path="res://Dragon/dragon.tscn" id="5_7jktm"]
 [ext_resource type="PackedScene" uid="uid://bqqfigd4njdv4" path="res://Pickup/PickupItem.tscn" id="5_ryrav"]
 [ext_resource type="Script" uid="uid://ckl05ly2j5xb4" path="res://Dragon/dragon_health_bar.gd" id="7_eow3j"]
@@ -23,6 +25,10 @@ bg_color = Color(0, 0.619058, 0.0899855, 1)
 [node name="PlayerCamera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_7jktm")]
 position = Vector2(1278, 612)
 player = NodePath("../Player")
+
+[node name="Chest" parent="." instance=ExtResource("3_mfdv2")]
+position = Vector2(1353, 1781)
+objToSpawn = ExtResource("4_iotsf")
 
 [node name="Crate" parent="." instance=ExtResource("7_vef74")]
 position = Vector2(1314, 1776)
