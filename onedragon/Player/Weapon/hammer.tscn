@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://k0jnn526oyw" path="res://Player/Weapon/weapon.tscn" id="1_32n7x"]
 
 [node name="Hammer" instance=ExtResource("1_32n7x")]
+POWER = 4
+ATTACK_DIST = 150
 
 [node name="WeaponSprite" parent="." index="0"]
 region_rect = Rect2(192, 288, 32, 32)

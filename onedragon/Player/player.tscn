@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://caidnjvy8yfg7"]
+[gd_scene load_steps=38 format=3 uid="uid://caidnjvy8yfg7"]
 
 [ext_resource type="Script" uid="uid://cdwys88ip8t7j" path="res://Player/player.gd" id="1_n471f"]
 [ext_resource type="Script" uid="uid://c76olrrqrua71" path="res://Player/PlayerController.gd" id="2_gwnis"]
@@ -337,9 +337,6 @@ scale_max = 0.05
 anim_speed_min = 1.0
 anim_speed_max = 1.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_n471f"]
-radius = 11.1803
-
 [node name="Player" type="Node2D"]
 script = ExtResource("1_n471f")
 
@@ -385,6 +382,3 @@ amount = 25
 texture = ExtResource("4_k53q1")
 explosiveness = 0.64
 process_material = SubResource("ParticleProcessMaterial_vtle1")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_n471f")
