@@ -59,6 +59,7 @@ func manage_motion() -> void:
 		velocity.y = move_toward(velocity.y, 0, moveSpeed)
 
 func dash() -> void:
+	Globals.play_sound("dash")
 	animationPlayer.play("Dash")
 	_canDash = false
 	dustParticleEffect.restart()

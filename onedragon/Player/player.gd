@@ -22,6 +22,7 @@ func _physics_process(delta: float) -> void:
 		attack()
 	
 func on_hit(hitpoints, force) -> void:
+	Globals.play_sound("player_get_hit")
 	health -= hitpoints
 	controller.on_hit(force)
 

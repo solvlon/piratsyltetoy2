@@ -15,6 +15,7 @@ region = Rect2(96, 256, 32, 32)
 collision_layer = 48
 collision_mask = 48
 disableCollisionOnOpen = false
+soundOnOpen = "open"
 
 [node name="Normal" parent="." index="0"]
 position = Vector2(0, -14)

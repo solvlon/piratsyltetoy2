@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ov8pcp2t75av"]
+[gd_scene load_steps=15 format=3 uid="uid://ov8pcp2t75av"]
 
 [ext_resource type="PackedScene" uid="uid://caidnjvy8yfg7" path="res://Player/player.tscn" id="2_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://daoaagl7kep0v" path="res://Camera/player_camera.tscn" id="3_7jktm"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://b6utbnp0p6xm7" path="res://Player/player_health_bar.gd" id="7_j5wjh"]
 [ext_resource type="PackedScene" uid="uid://cr4vcrlw6thu5" path="res://BreakableCrate/crate.tscn" id="7_vef74"]
 [ext_resource type="PackedScene" uid="uid://bkmy81nlbm8f8" path="res://Player/Weapon/axe.tscn" id="9_vef74"]
+[ext_resource type="PackedScene" uid="uid://c8llsj1o752lc" path="res://AudioPlayer/polyphonic_audio_player.tscn" id="12_iotsf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j5wjh"]
 bg_color = Color(0.791881, 0, 0.107835, 1)
@@ -81,3 +82,5 @@ vertical_alignment = 1
 
 [node name="Axe" parent="." instance=ExtResource("9_vef74")]
 position = Vector2(1493, 1816)
+
+[node name="AudioPlayer" parent="." instance=ExtResource("12_iotsf")]
