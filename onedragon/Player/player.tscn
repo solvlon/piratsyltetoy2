@@ -1,11 +1,11 @@
-[gd_scene load_steps=32 format=3 uid="uid://caidnjvy8yfg7"]
+[gd_scene load_steps=33 format=3 uid="uid://caidnjvy8yfg7"]
 
 [ext_resource type="Script" uid="uid://cdwys88ip8t7j" path="res://Player/player.gd" id="1_n471f"]
 [ext_resource type="Script" uid="uid://c76olrrqrua71" path="res://Player/PlayerController.gd" id="2_gwnis"]
 [ext_resource type="Texture2D" uid="uid://c5mvcg1nma0kj" path="res://assets/character/back1.png" id="2_o28un"]
+[ext_resource type="Shader" uid="uid://b6cvhsu7eivt3" path="res://Player/hittable.gdshader" id="3_7emwf"]
 [ext_resource type="Texture2D" uid="uid://i0j35gcogwdk" path="res://assets/character/forward1.png" id="3_n471f"]
 [ext_resource type="Texture2D" uid="uid://0eo26ahlw3cj" path="res://assets/character/l2.png" id="4_7emwf"]
-[ext_resource type="PackedScene" uid="uid://k0jnn526oyw" path="res://Player/Weapon/weapon.tscn" id="4_gwnis"]
 [ext_resource type="Texture2D" uid="uid://pclb6cfj5ajg" path="res://assets/particles/SmokePuffParticleSheet.png" id="4_k53q1"]
 [ext_resource type="Texture2D" uid="uid://b5gfvqao1ari" path="res://assets/character/r1.png" id="5_hshwv"]
 [ext_resource type="Texture2D" uid="uid://c5dl1wu4pqmvv" path="res://assets/character/back2.png" id="6_gpjlu"]
@@ -20,6 +20,11 @@
 [ext_resource type="Texture2D" uid="uid://bu4bpnw3ax7x6" path="res://assets/character/r2.png" id="15_m0h3t"]
 [ext_resource type="Texture2D" uid="uid://cgo5j2db237x4" path="res://assets/character/r3.png" id="16_i4o1l"]
 [ext_resource type="Texture2D" uid="uid://blwfgj403lvd6" path="res://assets/character/r4.png" id="17_j2n6q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hshwv"]
+shader = ExtResource("3_7emwf")
+shader_parameter/flash_color = Color(1, 0, 0, 1)
+shader_parameter/flash_value = 0.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c6x0f"]
 animations = [{
@@ -156,6 +161,19 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_k53q1"]
 resource_name = "Hit"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [SubResource("ShaderMaterial_hshwv"), 1.0, SubResource("ShaderMaterial_hshwv")]
+}
 
 [sub_resource type="Animation" id="Animation_4ntmi"]
 resource_name = "Idle"
@@ -186,6 +204,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:material")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("ShaderMaterial_hshwv")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:material:shader_parameter/flash_value")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_gwnis"]
@@ -239,6 +281,7 @@ collision_mask = 3
 script = ExtResource("2_gwnis")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PlayerController"]
+material = SubResource("ShaderMaterial_hshwv")
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_c6x0f")
 animation = &"Idle_F"
@@ -248,6 +291,36 @@ position = Vector2(10, 5)
 
 [node name="WeaponAttach2" type="Marker2D" parent="PlayerController/AnimatedSprite2D"]
 position = Vector2(-13, 5)
+
+[node name="WeaponAttach3" type="Marker2D" parent="PlayerController/AnimatedSprite2D"]
+position = Vector2(0, -12)
+
+[node name="WeaponAttach4" type="Marker2D" parent="PlayerController/AnimatedSprite2D"]
+position = Vector2(0, 19)
+
+[node name="WeaponAttach5" type="Marker2D" parent="PlayerController/AnimatedSprite2D"]
+position = Vector2(-22, -13)
+
+[node name="WeaponAttach6" type="Marker2D" parent="PlayerController/AnimatedSprite2D"]
+position = Vector2(21, -13)
+
+[node name="WeaponAttach7" type="Marker2D" parent="PlayerController/AnimatedSprite2D"]
+position = Vector2(22, 22)
+
+[node name="WeaponAttach8" type="Marker2D" parent="PlayerController/AnimatedSprite2D"]
+position = Vector2(-22, 22)
+
+[node name="WeaponAttach9" type="Marker2D" parent="PlayerController/AnimatedSprite2D"]
+position = Vector2(-32, 5)
+
+[node name="WeaponAttach10" type="Marker2D" parent="PlayerController/AnimatedSprite2D"]
+position = Vector2(30, 5)
+
+[node name="WeaponAttach11" type="Marker2D" parent="PlayerController/AnimatedSprite2D"]
+position = Vector2(0, -25)
+
+[node name="WeaponAttach12" type="Marker2D" parent="PlayerController/AnimatedSprite2D"]
+position = Vector2(0, 35)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerController"]
 position = Vector2(-1.5, 2)
@@ -276,20 +349,3 @@ amount = 25
 texture = ExtResource("4_k53q1")
 explosiveness = 0.64
 process_material = SubResource("ParticleProcessMaterial_vtle1")
-
-[node name="Weapon" parent="." node_paths=PackedStringArray("player", "attach") instance=ExtResource("4_gwnis")]
-position = Vector2(23, 0)
-player = NodePath("../PlayerController")
-attach = NodePath("../PlayerController/AnimatedSprite2D/WeaponAttach")
-
-[node name="Weapon2" parent="." node_paths=PackedStringArray("player", "attach") instance=ExtResource("4_gwnis")]
-position = Vector2(-27, 0)
-player = NodePath("../PlayerController")
-attach = NodePath("../PlayerController/AnimatedSprite2D/WeaponAttach2")
-FOLLOW_VEL_OFFSET = 0.01
-
-[node name="WeaponSprite" parent="Weapon2" index="0"]
-scale = Vector2(0.75, 0.75)
-region_rect = Rect2(192, 256, 32, 32)
-
-[editable path="Weapon2"]

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6taopqajv0hp"]
+
+[ext_resource type="PackedScene" uid="uid://k0jnn526oyw" path="res://Player/Weapon/weapon.tscn" id="1_8810i"]
+
+[node name="Spear" instance=ExtResource("1_8810i")]
+ATTACK_DIST = 400
+
+[node name="WeaponSprite" parent="." index="0"]
+region_rect = Rect2(256, 288, 32, 32)

@@ -14,12 +14,20 @@ extends Node2D
 
 @onready var animation = $AnimationPlayer
 @onready var hitParticle = $HitParticle
+@onready var equipArea = $EquipArea
 
 var _isAttacking = false
 var _isGoingBack = false
 var _attackDir
 
+func setup(player: CharacterBody2D, attach: Node2D) -> void:
+	self.player = player
+	self.attach = attach
+
 func _process(delta: float) -> void:
+	if attach == null && player == null:
+		return
+	
 	if _isAttacking:
 		global_position = lerp(global_position, 
 			attach.global_position + _attackDir , ATTACK_SPEED_TRAVEL * delta)
@@ -49,3 +57,8 @@ func _on_touch(body) -> void:
 	hitParticle.restart()
 	hitParticle.emitting = true
 	body.on_hit(POWER, Vector2.ZERO)
+
+func _on_equip_area_body_entered(body: Node2D) -> void:
+	# body is player
+	body.player.equip(self)
+	equipArea.queue_free()

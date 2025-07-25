@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://k0jnn526oyw"]
+[gd_scene load_steps=10 format=3 uid="uid://k0jnn526oyw"]
 
 [ext_resource type="Script" uid="uid://cc1bpigvgwg2m" path="res://Player/CharacterWeapon.gd" id="1_tj4no"]
 [ext_resource type="Texture2D" uid="uid://b636wksbchtes" path="res://assets/tilemapandsprites.png" id="2_tj4no"]
@@ -84,6 +84,8 @@ _data = {
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tj4no"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_87rp5"]
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tj4no"]
 particle_flag_disable_z = true
 direction = Vector3(0, 0, 0)
@@ -111,12 +113,20 @@ libraries = {
 }
 autoplay = "Idle"
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="HitArea" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
 shape = SubResource("CircleShape2D_tj4no")
+
+[node name="EquipArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EquipArea"]
+shape = SubResource("CircleShape2D_87rp5")
+debug_color = Color(0.298387, 0.619882, 0.305625, 0.42)
 
 [node name="HitParticle" type="GPUParticles2D" parent="."]
 emitting = false
@@ -126,4 +136,5 @@ one_shot = true
 explosiveness = 0.8
 process_material = SubResource("ParticleProcessMaterial_tj4no")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_touch"]
+[connection signal="body_entered" from="HitArea" to="." method="_on_touch"]
+[connection signal="body_entered" from="EquipArea" to="." method="_on_equip_area_body_entered"]
