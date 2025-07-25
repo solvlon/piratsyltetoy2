@@ -15,6 +15,7 @@ extends Node2D
 @onready var animation = $AnimationPlayer
 @onready var hitParticle = $HitParticle
 @onready var equipArea = $EquipArea
+@onready var hitArea = $HitArea
 
 var _isAttacking = false
 var _isGoingBack = false
@@ -40,6 +41,7 @@ func attack() -> void:
 	if _isAttacking:
 		return
 	
+	hitArea.set_deferred("monitoring", true)
 	# start attack
 	animation.play("Attack")
 	_isAttacking = true
@@ -52,6 +54,7 @@ func attack() -> void:
 	_isGoingBack = true
 	await get_tree().create_timer(ATTACK_BACK_SPEED).timeout
 	_isGoingBack = false
+	hitArea.set_deferred("monitoring", false)
 
 func _on_touch(body) -> void:
 	hitParticle.restart()
@@ -61,4 +64,4 @@ func _on_touch(body) -> void:
 func _on_equip_area_body_entered(body: Node2D) -> void:
 	# body is player
 	body.player.equip(self)
-	equipArea.queue_free()
+	equipArea.set_deferred("monitoring", false)

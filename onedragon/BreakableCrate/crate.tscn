@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://cr4vcrlw6thu5"]
+
+[ext_resource type="Script" uid="uid://d4bcrxsvjmc5f" path="res://BreakableCrate/breakable_crate.gd" id="1_o1kmq"]
+[ext_resource type="Texture2D" uid="uid://b636wksbchtes" path="res://assets/tilemapandsprites.png" id="2_nvald"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_id1dt"]
+atlas = ExtResource("2_nvald")
+region = Rect2(0, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wirv"]
+atlas = ExtResource("2_nvald")
+region = Rect2(32, 256, 32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8joid"]
+size = Vector2(19, 17)
+
+[node name="Crate" type="RigidBody2D"]
+collision_layer = 18
+collision_mask = 18
+freeze = true
+script = ExtResource("1_o1kmq")
+
+[node name="Normal" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_id1dt")
+
+[node name="Destroyed" type="Sprite2D" parent="."]
+visible = false
+texture = SubResource("AtlasTexture_5wirv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 1.5)
+shape = SubResource("RectangleShape2D_8joid")

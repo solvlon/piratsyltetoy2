@@ -39,6 +39,7 @@ func up_dash_speed(v) -> void:
 	controller.dashRecoveryTime *= v
 
 func equip(weapon) -> void:
+	print("new weapon!")
 	weapon.setup(controller, weaponAttachements[weaponList.size()])
 	weaponList.append(weapon)
 
