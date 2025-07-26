@@ -1,7 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://crhjdng2p0nk8"]
+[gd_scene load_steps=4 format=3 uid="uid://crhjdng2p0nk8"]
 
 [ext_resource type="PackedScene" uid="uid://bqqfigd4njdv4" path="res://Pickup/PickupItem.tscn" id="1_fc1l1"]
+[ext_resource type="Texture2D" uid="uid://b636wksbchtes" path="res://assets/tilemapandsprites.png" id="2_gbhn3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ife3"]
+atlas = ExtResource("2_gbhn3")
+region = Rect2(160, 256, 32, 32)
 
 [node name="dash_potion" instance=ExtResource("1_fc1l1")]
 action = "up_dash_dist"
 power = 1.1
+
+[node name="Sprite2D" parent="." index="1"]
+texture = SubResource("AtlasTexture_1ife3")

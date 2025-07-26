@@ -1,5 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://0icwersopt64"]
+[gd_scene load_steps=4 format=3 uid="uid://0icwersopt64"]
 
 [ext_resource type="PackedScene" uid="uid://bqqfigd4njdv4" path="res://Pickup/PickupItem.tscn" id="1_byhrg"]
+[ext_resource type="Texture2D" uid="uid://b636wksbchtes" path="res://assets/tilemapandsprites.png" id="2_0g150"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ji6yh"]
+atlas = ExtResource("2_0g150")
+region = Rect2(128, 224, 32, 32)
 
 [node name="HealthPotion" instance=ExtResource("1_byhrg")]
+
+[node name="Sprite2D" parent="." index="1"]
+texture = SubResource("AtlasTexture_ji6yh")
