@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://b1alvg57y3ahh"]
+
+[ext_resource type="Script" uid="uid://brgaq6x6xo6k3" path="res://Map/animate.gd" id="1_f7203"]
+[ext_resource type="Texture2D" path="res://Animated_Sprites/image1x10.png" id="1_prux1"]
+[ext_resource type="Texture2D" path="res://Animated_Sprites/image2x10.png" id="2_f7203"]
+[ext_resource type="Texture2D" path="res://Animated_Sprites/image3x10.png" id="3_spwcr"]
+[ext_resource type="Texture2D" path="res://Animated_Sprites/image4x10.png" id="4_sewdt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7sc4i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_prux1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_f7203")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_spwcr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_sewdt")
+}],
+"loop": true,
+"name": &"flame",
+"speed": 8.0
+}]
+
+[node name="Sprite2D" type="Sprite2D"]
+script = ExtResource("1_f7203")
+
+[node name="Torch" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(1458, 1818)
+sprite_frames = SubResource("SpriteFrames_7sc4i")
+animation = &"flame"
+frame_progress = 0.398496
