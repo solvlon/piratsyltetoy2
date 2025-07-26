@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=37 format=3 uid="uid://cy33rdhjhqnyv"]
+[gd_resource type="TileSet" load_steps=38 format=3 uid="uid://cy33rdhjhqnyv"]
 
 [ext_resource type="Texture2D" uid="uid://cl530wg523wio" path="res://assets/tiny-dungon/tilemap.png" id="1_t83l3"]
 [ext_resource type="Texture2D" uid="uid://b636wksbchtes" path="res://assets/tilemapandsprites.png" id="2_dukwa"]
@@ -274,6 +274,9 @@ polygon = PackedVector2Array(16, 8, 16, 16, -16, 16, -16, 8, 8, 8)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qhntm"]
 polygon = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qj1tf"]
+polygon = PackedVector2Array(-16, -16, 16, -16, 16, -8, -16, -8)
+
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_g0mwf"]
 polygon = PackedVector2Array(16, -16, 16, 16, -16, 16, -16, 8, 8, 8, 8, -16)
 
@@ -365,6 +368,7 @@ texture_region_size = Vector2i(32, 32)
 1:4/0 = 0
 0:4/0 = 0
 2:4/0 = 0
+2:4/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_qj1tf")
 3:4/0 = 0
 4:4/0 = 0
 5:4/0 = 0

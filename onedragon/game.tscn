@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://lqwrjlx6rt5n"]
+[gd_scene load_steps=23 format=3 uid="uid://ov8pcp2t75av"]
 
 [ext_resource type="PackedScene" uid="uid://caidnjvy8yfg7" path="res://Player/player.tscn" id="2_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://daoaagl7kep0v" path="res://Camera/player_camera.tscn" id="3_7jktm"]
@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b6taopqajv0hp" path="res://Player/Weapon/spear.tscn" id="5_215e1"]
 [ext_resource type="PackedScene" uid="uid://bqqfigd4njdv4" path="res://Pickup/PickupItem.tscn" id="5_ryrav"]
 [ext_resource type="PackedScene" uid="uid://c5bmomsjflhrk" path="res://Player/Weapon/sword.tscn" id="6_7sc4i"]
-[ext_resource type="Script" uid="uid://brgaq6x6xo6k3" path="res://Map/animate.gd" id="6_iotsf"]
+[ext_resource type="Script" path="res://Map/animate.gd" id="6_iotsf"]
 [ext_resource type="Script" uid="uid://ckl05ly2j5xb4" path="res://Dragon/dragon_health_bar.gd" id="7_eow3j"]
 [ext_resource type="Texture2D" uid="uid://c24u7udrm833m" path="res://Animated_Sprites/torch1.png" id="7_iotsf"]
 [ext_resource type="Script" uid="uid://b6utbnp0p6xm7" path="res://Player/player_health_bar.gd" id="7_j5wjh"]

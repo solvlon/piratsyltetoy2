@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="OneDragon"
-run/main_scene="uid://lqwrjlx6rt5n"
+run/main_scene="uid://ov8pcp2t75av"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

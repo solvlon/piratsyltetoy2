@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://q3m8am276760"]
+[gd_scene load_steps=50 format=3 uid="uid://q3m8am276760"]
 
 [ext_resource type="Script" uid="uid://chrscg7be4ah2" path="res://Dragon/dragon.gd" id="1_80mar"]
 [ext_resource type="Texture2D" uid="uid://cl530wg523wio" path="res://assets/tiny-dungon/tilemap.png" id="1_wq5gb"]
@@ -24,7 +24,18 @@
 [ext_resource type="Texture2D" uid="uid://c8tshfa4h4mym" path="res://assets/walk_and_attack/b4.png" id="21_xfcr6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_80mar"]
-radius = 55.0818
+radius = 15.0
+
+[sub_resource type="Gradient" id="Gradient_qatnp"]
+offsets = PackedFloat32Array(0, 0.701299)
+colors = PackedColorArray(0.403528, 0.146044, 0.601103, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_d5a0m"]
+gradient = SubResource("Gradient_qatnp")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.495413, 0.486239)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cjlra"]
 shader = ExtResource("2_kar7i")
@@ -354,6 +365,11 @@ script = ExtResource("1_80mar")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_80mar")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-1, -1)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_d5a0m")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
