@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bt3ho1345fdb0"]
+
+[ext_resource type="PackedScene" uid="uid://cr4vcrlw6thu5" path="res://BreakableCrate/crate.tscn" id="1_2q1l5"]
+[ext_resource type="Texture2D" uid="uid://b636wksbchtes" path="res://assets/tilemapandsprites.png" id="2_q3s2t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37isb"]
+atlas = ExtResource("2_q3s2t")
+region = Rect2(64, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvb8r"]
+atlas = ExtResource("2_q3s2t")
+region = Rect2(96, 256, 32, 32)
+
+[node name="Chest" instance=ExtResource("1_2q1l5")]
+collision_layer = 48
+collision_mask = 48
+disableCollisionOnOpen = false
+soundOnOpen = "open"
+
+[node name="Normal" parent="." index="0"]
+position = Vector2(0, -14)
+texture = SubResource("AtlasTexture_37isb")
+
+[node name="Destroyed" parent="." index="1"]
+position = Vector2(1, -14)
+texture = SubResource("AtlasTexture_dvb8r")
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(0.5, -12.5)

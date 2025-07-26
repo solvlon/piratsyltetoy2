@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://0icwersopt64"]
+
+[ext_resource type="PackedScene" uid="uid://bqqfigd4njdv4" path="res://Pickup/PickupItem.tscn" id="1_byhrg"]
+
+[node name="HealthPotion" instance=ExtResource("1_byhrg")]
