@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cubfii0ct35jf"]
+
+[ext_resource type="PackedScene" uid="uid://bqqfigd4njdv4" path="res://Pickup/PickupItem.tscn" id="1_n1k32"]
+
+[node name="apple" instance=ExtResource("1_n1k32")]
+action = "heal"

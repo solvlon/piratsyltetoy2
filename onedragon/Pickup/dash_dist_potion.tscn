@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqmagwbi186j1"]
+
+[ext_resource type="PackedScene" uid="uid://bqqfigd4njdv4" path="res://Pickup/PickupItem.tscn" id="1_c8v1o"]
+
+[node name="dash_dist_potion" instance=ExtResource("1_c8v1o")]
+action = "up_dash_speed"
+power = 0.9
