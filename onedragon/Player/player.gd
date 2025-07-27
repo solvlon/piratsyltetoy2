@@ -26,9 +26,9 @@ func _ready() -> void:
 		weaponAttachementsL.append(attachement)
 
 func _physics_process(delta: float) -> void:
-	if _canAttackR && Input.is_action_just_pressed("attack1"):
+	if _canAttackR && Input.is_action_just_pressed("attack1") && weaponListR.size() > 0:
 		attackR()
-	if _canAttackL && Input.is_action_just_pressed("attack2"):
+	if _canAttackL && Input.is_action_just_pressed("attack2") && weaponListL.size() > 0:
 		attackL()
 	
 func on_hit(hitpoints, force) -> void:
@@ -44,7 +44,7 @@ func up_max_health(v) -> void:
 	health += v
 
 func up_dash_dist(v) -> void:
-	controller.dashSpeedMultiplier *= v
+	controller.dashSpeed *= v
 
 func up_dash_speed(v) -> void:
 	controller.dashRecoveryTime *= v
@@ -86,6 +86,7 @@ func _equip(weapon, list, max, attachementParent, attachementList) -> void:
 
 func attackR() -> void:
 	_canAttackR = false
+	controller.play_attack()
 	_attack(weaponListR)
 	_canAttackR = true
 

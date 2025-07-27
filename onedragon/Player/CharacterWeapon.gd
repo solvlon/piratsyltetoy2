@@ -56,12 +56,12 @@ func attack() -> void:
 	
 	# going back
 	_isAttacking = false
+	hitArea.set_deferred("monitoring", false)
 	Globals.stop_sound_looping("attack")
 	animation.play("Idle")
 	_isGoingBack = true
 	await get_tree().create_timer(ATTACK_BACK_SPEED).timeout
 	_isGoingBack = false
-	hitArea.set_deferred("monitoring", false)
 
 func _on_touch(body) -> void:
 	Globals.play_sound("attack_touch")

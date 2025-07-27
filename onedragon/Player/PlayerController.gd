@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name PlayerController
 
 @export var moveSpeed = 300.0
+@export var dashSpeed = 0.5
 @export var dashSpeedMultiplier = 1.0
 @export var dashRecoveryTime = 1.0
 @export var pushRecovery = 10.0
@@ -14,6 +15,7 @@ class_name PlayerController
 var _canDash = true
 var _animDir = "F"
 var animWeap = ""
+var _isAttacking = false
 
 func _physics_process(delta: float) -> void:
 	
@@ -27,6 +29,11 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func manage_motion() -> void:
+	
+	if _isAttacking:
+		velocity.x = move_toward(velocity.x, 0, moveSpeed)
+		velocity.y = move_toward(velocity.y, 0, moveSpeed)
+		return
 	
 	if animationPlayer.is_playing() && animationPlayer.current_animation == "Dash":
 		dash_move()
@@ -67,8 +74,14 @@ func dash() -> void:
 	await get_tree().create_timer(dashRecoveryTime).timeout
 	_canDash = true
 
+func play_attack() -> void:
+	_isAttacking = true
+	print(str("Attack", _animDir, animWeap))
+	sprite.play(str("Attack", _animDir, animWeap))
+	
+
 func dash_move() -> void:
-	velocity = velocity.normalized() * moveSpeed * dashSpeedMultiplier
+	velocity = velocity.normalized() * moveSpeed * dashSpeedMultiplier * dashSpeed
 
 func on_hit(force: Vector2) -> void:
 	animationPlayer.speed_scale = 1
@@ -76,3 +89,7 @@ func on_hit(force: Vector2) -> void:
 	hitParticleEffect.restart()
 	hitParticleEffect.emitting = true
 	velocity = force
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if sprite.animation.begins_with("Attack"):
+		_isAttacking = false
