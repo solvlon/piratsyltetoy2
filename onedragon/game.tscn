@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b6taopqajv0hp" path="res://Player/Weapon/spear.tscn" id="5_215e1"]
 [ext_resource type="PackedScene" uid="uid://bqqfigd4njdv4" path="res://Pickup/PickupItem.tscn" id="5_ryrav"]
 [ext_resource type="PackedScene" uid="uid://c5bmomsjflhrk" path="res://Player/Weapon/sword.tscn" id="6_7sc4i"]
-[ext_resource type="Script" path="res://Map/animate.gd" id="6_iotsf"]
+[ext_resource type="Script" uid="uid://brgaq6x6xo6k3" path="res://Map/animate.gd" id="6_iotsf"]
 [ext_resource type="Script" uid="uid://ckl05ly2j5xb4" path="res://Dragon/dragon_health_bar.gd" id="7_eow3j"]
 [ext_resource type="Texture2D" uid="uid://c24u7udrm833m" path="res://Animated_Sprites/torch1.png" id="7_iotsf"]
 [ext_resource type="Script" uid="uid://b6utbnp0p6xm7" path="res://Player/player_health_bar.gd" id="7_j5wjh"]
@@ -55,68 +55,68 @@ position = Vector2(1278, 612)
 player = NodePath("../Player")
 
 [node name="Chest" parent="." instance=ExtResource("3_mfdv2")]
-position = Vector2(1353, 1781)
+position = Vector2(112, 68)
 objToSpawn = ExtResource("4_iotsf")
 
 [node name="Chest2" parent="." instance=ExtResource("3_mfdv2")]
-position = Vector2(1480, 1738)
+position = Vector2(1166, 877)
 objToSpawn = ExtResource("4_iotsf")
 
 [node name="Chest3" parent="." instance=ExtResource("3_mfdv2")]
-position = Vector2(1619, 1746)
+position = Vector2(2938, 393)
 objToSpawn = ExtResource("4_iotsf")
 
 [node name="Chest4" parent="." instance=ExtResource("3_mfdv2")]
-position = Vector2(1683, 1833)
+position = Vector2(2857, 1919)
 objToSpawn = ExtResource("4_iotsf")
 
 [node name="Chest5" parent="." instance=ExtResource("3_mfdv2")]
-position = Vector2(1548, 1797)
+position = Vector2(1465, 530)
 objToSpawn = ExtResource("5_215e1")
 
 [node name="Chest6" parent="." instance=ExtResource("3_mfdv2")]
-position = Vector2(1403, 1860)
+position = Vector2(2586, 496)
 objToSpawn = ExtResource("4_iotsf")
 
 [node name="Chest7" parent="." instance=ExtResource("3_mfdv2")]
-position = Vector2(1412, 1736)
+position = Vector2(854, 104)
 objToSpawn = ExtResource("6_7sc4i")
 
 [node name="Chest8" parent="." instance=ExtResource("3_mfdv2")]
-position = Vector2(1557, 1714)
+position = Vector2(2848, 26)
 objToSpawn = ExtResource("4_iotsf")
 
 [node name="Chest9" parent="." instance=ExtResource("3_mfdv2")]
-position = Vector2(1656, 1885)
+position = Vector2(2401, 1285)
 objToSpawn = ExtResource("4_iotsf")
 
 [node name="Chest10" parent="." instance=ExtResource("3_mfdv2")]
-position = Vector2(1482, 1951)
+position = Vector2(301, 360)
 objToSpawn = ExtResource("9_vef74")
 
 [node name="Chest11" parent="." instance=ExtResource("3_mfdv2")]
-position = Vector2(1627, 1942)
+position = Vector2(1251, 1293)
 objToSpawn = ExtResource("4_iotsf")
 
 [node name="Chest12" parent="." instance=ExtResource("3_mfdv2")]
-position = Vector2(1361, 1918)
+position = Vector2(789, 1640)
 objToSpawn = ExtResource("4_iotsf")
 
 [node name="Chest13" parent="." instance=ExtResource("3_mfdv2")]
-position = Vector2(1326, 1852)
+position = Vector2(1775, 1439)
 objToSpawn = ExtResource("4_iotsf")
 
 [node name="Crate" parent="." instance=ExtResource("7_vef74")]
-position = Vector2(1314, 1776)
+position = Vector2(1375, 1641)
 objToSpawn = ExtResource("5_ryrav")
 
 [node name="Dragon" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_7jktm")]
-position = Vector2(1352, 964)
+position = Vector2(1716, 1018)
 player = NodePath("../Player")
 maxHealth = 100
 
 [node name="Player" parent="." instance=ExtResource("2_fc0e3")]
-position = Vector2(1561, 1856)
+position = Vector2(1623, 1859)
 
 [node name="Area2D" parent="." instance=ExtResource("5_ryrav")]
 position = Vector2(1096, 1768)
@@ -245,8 +245,163 @@ position = Vector2(1972, 1549)
 sprite_frames = SubResource("SpriteFrames_7sc4i")
 animation = &"flame"
 
+[node name="Torch22" type="AnimatedSprite2D" parent="Sprite2D"]
+z_index = 1
+position = Vector2(1377, 1419)
+sprite_frames = SubResource("SpriteFrames_7sc4i")
+animation = &"flame"
+
+[node name="Torch23" type="AnimatedSprite2D" parent="Sprite2D"]
+z_index = 1
+position = Vector2(1234, 1420)
+sprite_frames = SubResource("SpriteFrames_7sc4i")
+animation = &"flame"
+
+[node name="Torch44" type="AnimatedSprite2D" parent="Sprite2D"]
+z_index = 1
+position = Vector2(192, 784)
+sprite_frames = SubResource("SpriteFrames_7sc4i")
+animation = &"flame"
+
+[node name="Torch45" type="AnimatedSprite2D" parent="Sprite2D"]
+z_index = 1
+position = Vector2(380, 785)
+sprite_frames = SubResource("SpriteFrames_7sc4i")
+animation = &"flame"
+
+[node name="Torch46" type="AnimatedSprite2D" parent="Sprite2D"]
+z_index = 1
+position = Vector2(628, 658)
+sprite_frames = SubResource("SpriteFrames_7sc4i")
+animation = &"flame"
+
+[node name="Torch47" type="AnimatedSprite2D" parent="Sprite2D"]
+z_index = 1
+position = Vector2(756, 660)
+sprite_frames = SubResource("SpriteFrames_7sc4i")
+animation = &"flame"
+
+[node name="Torch24" type="AnimatedSprite2D" parent="Sprite2D"]
+z_index = 1
+position = Vector2(526, 1362)
+sprite_frames = SubResource("SpriteFrames_7sc4i")
+animation = &"flame"
+
+[node name="Torch25" type="AnimatedSprite2D" parent="Sprite2D"]
+z_index = 1
+position = Vector2(353, 1363)
+sprite_frames = SubResource("SpriteFrames_7sc4i")
+animation = &"flame"
+
+[node name="Torch26" type="AnimatedSprite2D" parent="Sprite2D"]
+z_index = 1
+position = Vector2(518, 1841)
+sprite_frames = SubResource("SpriteFrames_7sc4i")
+animation = &"flame"
+
+[node name="Torch27" type="AnimatedSprite2D" parent="Sprite2D"]
+z_index = 1
+position = Vector2(631, 1838)
+sprite_frames = SubResource("SpriteFrames_7sc4i")
+animation = &"flame"
+
+[node name="Torch28" type="AnimatedSprite2D" parent="Sprite2D"]
+z_index = 1
+position = Vector2(769, 1842)
+sprite_frames = SubResource("SpriteFrames_7sc4i")
+animation = &"flame"
+
+[node name="Torch30" type="AnimatedSprite2D" parent="Sprite2D"]
+z_index = 1
+position = Vector2(1129, 1936)
+sprite_frames = SubResource("SpriteFrames_7sc4i")
+animation = &"flame"
+
+[node name="Torch31" type="AnimatedSprite2D" parent="Sprite2D"]
+z_index = 1
+position = Vector2(1259, 1938)
+sprite_frames = SubResource("SpriteFrames_7sc4i")
+animation = &"flame"
+
+[node name="Torch32" type="AnimatedSprite2D" parent="Sprite2D"]
+z_index = 1
+position = Vector2(1424, 1940)
+sprite_frames = SubResource("SpriteFrames_7sc4i")
+animation = &"flame"
+
+[node name="Torch33" type="AnimatedSprite2D" parent="Sprite2D"]
+z_index = 1
+position = Vector2(1962, 974)
+sprite_frames = SubResource("SpriteFrames_7sc4i")
+animation = &"flame"
+
+[node name="Torch34" type="AnimatedSprite2D" parent="Sprite2D"]
+z_index = 1
+position = Vector2(2389, 1394)
+sprite_frames = SubResource("SpriteFrames_7sc4i")
+animation = &"flame"
+
+[node name="Torch35" type="AnimatedSprite2D" parent="Sprite2D"]
+z_index = 1
+position = Vector2(2535, 1395)
+sprite_frames = SubResource("SpriteFrames_7sc4i")
+animation = &"flame"
+
+[node name="Torch36" type="AnimatedSprite2D" parent="Sprite2D"]
+z_index = 1
+position = Vector2(2689, 1393)
+sprite_frames = SubResource("SpriteFrames_7sc4i")
+animation = &"flame"
+
+[node name="Torch37" type="AnimatedSprite2D" parent="Sprite2D"]
+z_index = 1
+position = Vector2(2817, 1394)
+sprite_frames = SubResource("SpriteFrames_7sc4i")
+animation = &"flame"
+
+[node name="Torch38" type="AnimatedSprite2D" parent="Sprite2D"]
+z_index = 1
+position = Vector2(2968, 1264)
+sprite_frames = SubResource("SpriteFrames_7sc4i")
+animation = &"flame"
+
+[node name="Torch39" type="AnimatedSprite2D" parent="Sprite2D"]
+z_index = 1
+position = Vector2(2716, 749)
+sprite_frames = SubResource("SpriteFrames_7sc4i")
+animation = &"flame"
+
+[node name="Torch40" type="AnimatedSprite2D" parent="Sprite2D"]
+z_index = 1
+position = Vector2(2546, 753)
+sprite_frames = SubResource("SpriteFrames_7sc4i")
+animation = &"flame"
+
+[node name="Torch41" type="AnimatedSprite2D" parent="Sprite2D"]
+z_index = 1
+position = Vector2(2836, 690)
+sprite_frames = SubResource("SpriteFrames_7sc4i")
+animation = &"flame"
+
+[node name="Torch42" type="AnimatedSprite2D" parent="Sprite2D"]
+z_index = 1
+position = Vector2(2937, 687)
+sprite_frames = SubResource("SpriteFrames_7sc4i")
+animation = &"flame"
+
+[node name="Torch43" type="AnimatedSprite2D" parent="Sprite2D"]
+z_index = 1
+position = Vector2(3070, 622)
+sprite_frames = SubResource("SpriteFrames_7sc4i")
+animation = &"flame"
+
+[node name="Torch29" type="AnimatedSprite2D" parent="Sprite2D"]
+z_index = 1
+position = Vector2(300, 1840)
+sprite_frames = SubResource("SpriteFrames_7sc4i")
+animation = &"flame"
+
 [node name="Torch5" type="AnimatedSprite2D" parent="Sprite2D"]
-visible = false
 z_index = 1
 position = Vector2(816, 238)
 sprite_frames = SubResource("SpriteFrames_7sc4i")
