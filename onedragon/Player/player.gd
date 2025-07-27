@@ -40,6 +40,7 @@ func heal(points) -> void:
 	health = clamp(health + points, 0, maxHealth)
 
 func up_max_health(v) -> void:
+	Globals.play_sound("heal")
 	maxHealth += v
 	health += v
 

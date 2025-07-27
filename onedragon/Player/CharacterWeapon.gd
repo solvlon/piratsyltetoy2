@@ -49,22 +49,23 @@ func attack() -> void:
 	hitArea.set_deferred("monitoring", true)
 	# start attack
 	animation.play("Attack")
-	Globals.play_sound_looping("woosh", "attack")
+	Globals.play_sound("throw")
 	_isAttacking = true
 	_attackDir = (get_global_mouse_position() - global_position).normalized() * ATTACK_DIST
 	await get_tree().create_timer(ATTACK_SPEED).timeout
 	
 	# going back
 	_isAttacking = false
+
 	hitArea.set_deferred("monitoring", false)
-	Globals.stop_sound_looping("attack")
+
 	animation.play("Idle")
 	_isGoingBack = true
 	await get_tree().create_timer(ATTACK_BACK_SPEED).timeout
 	_isGoingBack = false
 
 func _on_touch(body) -> void:
-	Globals.play_sound("attack_touch")
+	Globals.play_sound("crushed")
 	hitParticle.restart()
 	hitParticle.emitting = true
 	body.on_hit(POWER, Vector2.ZERO)
@@ -76,4 +77,6 @@ func _on_equip_area_body_entered(body: Node2D) -> void:
 	# body is player
 	sprite.visible = keepSpriteOnEquip
 	body.player.equip(self, isRightHand)
+
+	Globals.play_sound("weapon_equip")
 	equipArea.set_deferred("monitoring", false)

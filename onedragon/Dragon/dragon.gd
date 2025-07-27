@@ -90,7 +90,7 @@ func _process(delta: float) -> void:
 				animated_sprite_2d.scale.x *=  -1
 				_fliped = false
 			fireball_spawn = fireball_spawn_up
-		print(_fliped)
+		#print(_fliped)
 
 func _on_attack_cooldown_timeout():
 	
@@ -99,7 +99,7 @@ func _on_attack_cooldown_timeout():
 	elif tile_swipe_area.get_overlapping_bodies().has(player.controller):
 		_tile_swipe_attack()
 	elif fire_attack_area.get_overlapping_bodies().has(player.controller):
-		_fire_attack()	
+		_fire_attack()
 	
 	attack_cooldown.start(randf_range(ATTACK_MIN_WAIT_TIME,ATTACK_MAX_WAIT_TIME))
 
@@ -113,6 +113,7 @@ func _fire_attack():
 	fireball.move_direction = position.direction_to(player.controller.global_position)
 	add_child(fireball)
 	fire_particles.rotation = position.direction_to(player.controller.global_position).angle()
+	Globals.play_sound("fireburst")
 	await  fireball.spawned
 	await  get_tree().create_timer(.5).timeout
 	_is_attacking = false
@@ -120,6 +121,8 @@ func _fire_attack():
 func _tile_swipe_attack():
 	_is_attacking = true
 	animation_player.play("TileSwipeAttack")
+	Globals.play_sound("dragon_growl")
+	Globals.play_sound("tail_swipe")
 	await  animation_player.animation_finished
 	_is_attacking = false
 	
@@ -128,6 +131,7 @@ func _claw_attack():
 	var tween = create_tween()
 	tween.tween_property(animated_sprite_2d,"position",position.direction_to(player.global_position) * 20, 0.1) 
 	tween.tween_property(animated_sprite_2d,"position",Vector2.ZERO, 0.4) 
+	Globals.play_sound("dragon_growl")
 	await  tween.finished
 	_is_attacking = false
 	

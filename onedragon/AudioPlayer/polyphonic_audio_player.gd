@@ -33,7 +33,7 @@ func _add_sounds_to_library() -> void:
 		
 		audio_file = "res://assets/audio/sound_effects/" + audio_file
 		var file_name_no_postfix: String = audio_file.get_file().get_basename()
-		var sound_number: int = _get_sound_number(audio_file)
+		var sound_number: int = _get_sound_number(file_name_no_postfix)
 		var sound_key: String = file_name_no_postfix
 		
 		var sound_effect: SoundEffect = null
