@@ -451,6 +451,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Axe" parent="." instance=ExtResource("9_vef74")]
-position = Vector2(1493, 1816)
+position = Vector2(1620, 1820)
 
 [node name="AudioPlayer" parent="." instance=ExtResource("12_iotsf")]

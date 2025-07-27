@@ -3,7 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://k0jnn526oyw" path="res://Player/Weapon/weapon.tscn" id="1_20kjk"]
 
 [node name="Axe" instance=ExtResource("1_20kjk")]
-ATTACK_DIST = 10
+ATTACK_SPEED_TRAVEL = 25
+ATTACK_DIST = 50
+playerAnimation = "A"
+keepSpriteOnEquip = false
 
 [node name="WeaponSprite" parent="." index="0"]
 region_rect = Rect2(192, 256, 32, 32)

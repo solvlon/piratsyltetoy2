@@ -11,11 +11,16 @@ extends Node2D
 @export var ATTACK_BACK_SPEED = 0.5
 @export var ATTACK_DIST = 200
 @export var FOLLOW_VEL_OFFSET = 0.02
+@export var isRightHand = true
+@export var playerAnimation = ""
+@export var keepSpriteOnEquip = true
+@export var usageCount = -1
 
 @onready var animation = $AnimationPlayer
 @onready var hitParticle = $HitParticle
 @onready var equipArea = $EquipArea
 @onready var hitArea = $HitArea
+@onready var sprite = $WeaponSprite
 
 var _isAttacking = false
 var _isGoingBack = false
@@ -51,20 +56,24 @@ func attack() -> void:
 	
 	# going back
 	_isAttacking = false
+	hitArea.set_deferred("monitoring", false)
 	Globals.stop_sound_looping("attack")
 	animation.play("Idle")
 	_isGoingBack = true
 	await get_tree().create_timer(ATTACK_BACK_SPEED).timeout
 	_isGoingBack = false
-	hitArea.set_deferred("monitoring", false)
 
 func _on_touch(body) -> void:
 	Globals.play_sound("attack_touch")
 	hitParticle.restart()
 	hitParticle.emitting = true
 	body.on_hit(POWER, Vector2.ZERO)
+	usageCount = usageCount - 1
+	if usageCount == 0:
+		player.player.unequip(self, isRightHand)
 
 func _on_equip_area_body_entered(body: Node2D) -> void:
 	# body is player
-	body.player.equip(self)
+	sprite.visible = keepSpriteOnEquip
+	body.player.equip(self, isRightHand)
 	equipArea.set_deferred("monitoring", false)

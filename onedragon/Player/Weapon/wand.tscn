@@ -1,0 +1,159 @@
+[gd_scene load_steps=12 format=3 uid="uid://dfb4vqw26muor"]
+
+[ext_resource type="Script" uid="uid://cc1bpigvgwg2m" path="res://Player/CharacterWeapon.gd" id="1_ymwij"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4gwli"]
+load_path = "res://.godot/imported/tilemapandsprites.png-2ca48724d172e65f70a02b899ea8b6b7.ctex"
+
+[sub_resource type="Gradient" id="Gradient_qatnp"]
+offsets = PackedFloat32Array(0, 0.701299)
+colors = PackedColorArray(0.403528, 0.146044, 0.601103, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ymwij"]
+gradient = SubResource("Gradient_qatnp")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.495413, 0.486239)
+
+[sub_resource type="Animation" id="Animation_tj4no"]
+resource_name = "Attack"
+length = 0.33
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.436332, 6.70206]
+}
+
+[sub_resource type="Animation" id="Animation_k53q1"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -2), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WeaponSprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_fhl08"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WeaponSprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.436332]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fhl08"]
+_data = {
+&"Attack": SubResource("Animation_tj4no"),
+&"Idle": SubResource("Animation_k53q1"),
+&"RESET": SubResource("Animation_fhl08")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tj4no"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_87rp5"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tj4no"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 147.83
+initial_velocity_max = 147.83
+gravity = Vector3(0, 50, 0)
+scale_min = 3.0
+scale_max = 3.0
+color = Color(1, 1, 0.25098, 1)
+
+[node name="wand" type="Node2D"]
+script = ExtResource("1_ymwij")
+isRightHand = false
+usageCount = 5
+
+[node name="WeaponSprite" type="Sprite2D" parent="."]
+rotation = 0.436332
+scale = Vector2(0.5, 0.5)
+texture = SubResource("CompressedTexture2D_4gwli")
+region_enabled = true
+region_rect = Rect2(224, 256, 32, 32)
+
+[node name="PointLight2D" type="PointLight2D" parent="WeaponSprite"]
+texture = SubResource("GradientTexture2D_ymwij")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_fhl08")
+}
+autoplay = "Idle"
+
+[node name="HitArea" type="Area2D" parent="."]
+collision_layer = 20
+collision_mask = 20
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
+shape = SubResource("CircleShape2D_tj4no")
+
+[node name="EquipArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EquipArea"]
+shape = SubResource("CircleShape2D_87rp5")
+debug_color = Color(0.298387, 0.619882, 0.305625, 0.42)
+
+[node name="HitParticle" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 20
+lifetime = 0.2
+one_shot = true
+explosiveness = 0.8
+process_material = SubResource("ParticleProcessMaterial_tj4no")
+
+[connection signal="body_entered" from="HitArea" to="." method="_on_touch"]
+[connection signal="body_entered" from="EquipArea" to="." method="_on_equip_area_body_entered"]
