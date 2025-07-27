@@ -35,6 +35,7 @@ var _spawn_position
 
 var _fliped = false
 var fireball_spawn : Node2D = fireball_spawn_left
+var has_target := false
 
 func _ready() -> void:
 	health = maxHealth
@@ -44,6 +45,9 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	
 	if follow_area.get_overlapping_bodies().has(player.controller):
+		if not has_target:
+			has_target = true
+			Globals.play_sound("dragon_engage")
 		navigation_agent_2d.target_position = player.controller.global_position
 	else:
 		navigation_agent_2d.target_position = _spawn_position
