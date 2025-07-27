@@ -12,7 +12,8 @@ class_name PlayerController
 @onready var player = $"../../Player"
 
 var _canDash = true
-var _animDir = "_F"
+var _animDir = "F"
+var animWeap = ""
 
 func _physics_process(delta: float) -> void:
 	
@@ -33,13 +34,13 @@ func manage_motion() -> void:
 	
 	var direction = Input.get_vector("left", "right", "up", "down")
 	if direction.x > 0:
-		_animDir = "_R"
+		_animDir = "R"
 	elif direction.x < 0:
-		_animDir = "_L"
+		_animDir = "L"
 	if direction.y > 0:
-		_animDir = "_F"
+		_animDir = "F"
 	elif direction.y < 0:
-		_animDir = "_B"
+		_animDir = "B"
 	
 	if direction:
 		if _canDash && Input.is_action_just_pressed("dash"):
@@ -48,13 +49,13 @@ func manage_motion() -> void:
 		# Moving
 		animationPlayer.speed_scale = moveSpeed / 100
 		animationPlayer.play("Run")
-		sprite.play(str("Run", _animDir))
+		sprite.play(str("Run", _animDir, animWeap))
 		velocity = direction * moveSpeed
 	else:
 		# Not moving
 		animationPlayer.speed_scale = 1
 		animationPlayer.play("Idle")
-		sprite.play(str("Idle", _animDir))
+		sprite.play(str("Idle", _animDir, animWeap))
 		velocity.x = move_toward(velocity.x, 0, moveSpeed)
 		velocity.y = move_toward(velocity.y, 0, moveSpeed)
 

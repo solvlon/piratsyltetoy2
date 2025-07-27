@@ -4,6 +4,8 @@
 
 [node name="Axe" instance=ExtResource("1_20kjk")]
 ATTACK_DIST = 10
+playerAnimation = "S"
+keepSpriteOnEquip = false
 
 [node name="WeaponSprite" parent="." index="0"]
 region_rect = Rect2(192, 256, 32, 32)
