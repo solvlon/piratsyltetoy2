@@ -532,11 +532,15 @@ position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_c6x0f")
 animation = &"IdleLS"
 
-[node name="WeaponAttach" type="Marker2D" parent="PlayerController/AnimatedSprite2D"]
-position = Vector2(10, 5)
+[node name="RAttachements" type="Node2D" parent="PlayerController/AnimatedSprite2D"]
 
-[node name="WeaponAttach2" type="Marker2D" parent="PlayerController/AnimatedSprite2D"]
+[node name="WeaponAttach2" type="Marker2D" parent="PlayerController/AnimatedSprite2D/RAttachements"]
 position = Vector2(-13, 5)
+
+[node name="LAttachements" type="Node2D" parent="PlayerController/AnimatedSprite2D"]
+
+[node name="WeaponAttach" type="Marker2D" parent="PlayerController/AnimatedSprite2D/LAttachements"]
+position = Vector2(10, 5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerController"]
 position = Vector2(-1.5, 2)

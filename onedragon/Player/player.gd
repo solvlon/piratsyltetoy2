@@ -2,22 +2,28 @@ extends Node2D
 class_name Player
 
 @onready var controller = $PlayerController
-@onready var weaponAttachementParent = $PlayerController/AnimatedSprite2D
+@onready var weaponAttachementParentR = $PlayerController/AnimatedSprite2D/RAttachements
+@onready var weaponAttachementParentL = $PlayerController/AnimatedSprite2D/LAttachements
 
 @export var maxHealth = 100
 @export var health = 100
 @export var attackPauseTime = 0.2
 @export var attackRecoveryTime = 1
+@export var maxRHandWeapons = 1
+@export var maxLHandWeapons = 1
 
-var weaponAttachements = Array()
+var weaponAttachementsR = Array()
+var weaponAttachementsL = Array()
 var weaponListR = Array()
 var weaponListL = Array()
 var _canAttackR = true
 var _canAttackL = true
 
 func _ready() -> void:
-	for attachement in weaponAttachementParent.get_children():
-		weaponAttachements.append(attachement)
+	for attachement in weaponAttachementParentR.get_children():
+		weaponAttachementsR.append(attachement)
+	for attachement in weaponAttachementParentL.get_children():
+		weaponAttachementsL.append(attachement)
 
 func _physics_process(delta: float) -> void:
 	if _canAttackR && Input.is_action_just_pressed("attack1"):
@@ -45,18 +51,24 @@ func up_dash_speed(v) -> void:
 
 func equip(weapon, isRightHand) -> void:
 	if isRightHand:
-		_equip(weapon, weaponListR)
+		_equip(weapon, weaponListR, maxRHandWeapons, weaponAttachementParentR, weaponAttachementsR)
 	else:
-		_equip(weapon, weaponListL)
+		_equip(weapon, weaponListL, maxLHandWeapons, weaponAttachementParentL, weaponAttachementsL)
 
-func _equip(weapon, list) -> void:
-	if weaponAttachements.size() <= list.size():
+func _equip(weapon, list, max, attachementParent, attachementList) -> void:
+	
+	if list.size() == max:
+		var w = list.pop_front()
+		attachementParent.remove_child(w)
+		w.queue_free()
+	
+	if attachementList.size() <= list.size():
 		# spawn new weapon attachement
 		var newNode = Node2D.new()
-		weaponAttachementParent.add_child(newNode)
-		newNode.global_position = weaponAttachementParent.global_position + randf_range(15, 15 + weaponListR.size()*2) * Vector2.from_angle(randf_range(0, 2*PI))
-		weaponAttachements.append(newNode)
-	weapon.setup(controller, weaponAttachements[list.size()])
+		attachementParent.add_child(newNode)
+		newNode.global_position = attachementParent.global_position + randf_range(15, 15 + weaponListR.size()*2) * Vector2.from_angle(randf_range(0, 2*PI))
+		attachementList.append(newNode)
+	weapon.setup(controller, attachementList[list.size()])
 	list.append(weapon)
 	if weapon.playerAnimation != "":
 		controller.animWeap = weapon.playerAnimation

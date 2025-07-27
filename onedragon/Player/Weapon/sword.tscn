@@ -5,3 +5,5 @@
 [node name="Sword" instance=ExtResource("1_kogbm")]
 POWER = 2
 ATTACK_DIST = 250
+playerAnimation = "S"
+keepSpriteOnEquip = false
