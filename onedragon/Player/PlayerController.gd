@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name PlayerController
 
-@export var moveSpeed = 300.0
+@export var moveSpeed = 150.0
 @export var dashSpeed = 0.5
 @export var dashSpeedMultiplier = 1.0
 @export var dashRecoveryTime = 1.0

@@ -52,6 +52,7 @@ bg_color = Color(0, 0.619058, 0.0899855, 1)
 
 [node name="PlayerCamera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_7jktm")]
 position = Vector2(1278, 612)
+zoom = Vector2(4, 4)
 player = NodePath("../Player")
 
 [node name="Chest" parent="." instance=ExtResource("3_mfdv2")]
