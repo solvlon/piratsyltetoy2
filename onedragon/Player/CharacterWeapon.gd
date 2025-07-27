@@ -14,6 +14,7 @@ extends Node2D
 @export var isRightHand = true
 @export var playerAnimation = ""
 @export var keepSpriteOnEquip = true
+@export var usageCount = -1
 
 @onready var animation = $AnimationPlayer
 @onready var hitParticle = $HitParticle
@@ -67,6 +68,9 @@ func _on_touch(body) -> void:
 	hitParticle.restart()
 	hitParticle.emitting = true
 	body.on_hit(POWER, Vector2.ZERO)
+	usageCount = usageCount - 1
+	if usageCount == 0:
+		player.player.unequip(self, isRightHand)
 
 func _on_equip_area_body_entered(body: Node2D) -> void:
 	# body is player

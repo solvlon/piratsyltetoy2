@@ -6,6 +6,7 @@
 POWER = 1
 ATTACK_DIST = 300
 isRightHand = false
+usageCount = 1
 
 [node name="WeaponSprite" parent="." index="0"]
 region_rect = Rect2(256, 288, 32, 32)

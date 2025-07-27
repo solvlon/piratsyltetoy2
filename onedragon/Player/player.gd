@@ -49,6 +49,16 @@ func up_dash_dist(v) -> void:
 func up_dash_speed(v) -> void:
 	controller.dashRecoveryTime *= v
 
+func unequip(weapon, isRightHand) -> void:
+	if isRightHand:
+		weaponListR.erase(weapon)
+		weaponAttachementParentR.remove_child(weapon)
+		weapon.queue_free()
+	else:
+		weaponListL.erase(weapon)
+		weaponAttachementParentL.remove_child(weapon)
+		weapon.queue_free()
+
 func equip(weapon, isRightHand) -> void:
 	if isRightHand:
 		_equip(weapon, weaponListR, maxRHandWeapons, weaponAttachementParentR, weaponAttachementsR)
