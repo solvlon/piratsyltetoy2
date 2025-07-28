@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ov8pcp2t75av"]
+[gd_scene load_steps=24 format=3 uid="uid://ov8pcp2t75av"]
 
 [ext_resource type="PackedScene" uid="uid://caidnjvy8yfg7" path="res://Player/player.tscn" id="2_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://daoaagl7kep0v" path="res://Camera/player_camera.tscn" id="3_7jktm"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://d086lujov4nn8" path="res://Animated_Sprites/torch3.png" id="9_215e1"]
 [ext_resource type="PackedScene" uid="uid://bkmy81nlbm8f8" path="res://Player/Weapon/axe.tscn" id="9_vef74"]
 [ext_resource type="Texture2D" uid="uid://cc6odf06rxphj" path="res://Animated_Sprites/torch4.png" id="10_7sc4i"]
+[ext_resource type="PackedScene" uid="uid://bqmagwbi186j1" path="res://Pickup/dash_dist_potion.tscn" id="10_e36ub"]
 [ext_resource type="PackedScene" uid="uid://c8llsj1o752lc" path="res://AudioPlayer/polyphonic_audio_player.tscn" id="12_iotsf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7sc4i"]
@@ -41,10 +42,10 @@ animations = [{
 }]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j5wjh"]
-bg_color = Color(0.791881, 0, 0.107835, 1)
+bg_color = Color(0.435862, 0.0213278, 0.320807, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eow3j"]
-bg_color = Color(0, 0.619058, 0.0899855, 1)
+bg_color = Color(0, 0.817151, 0.862997, 1)
 
 [node name="Game" type="Node"]
 
@@ -108,8 +109,12 @@ position = Vector2(1775, 1439)
 objToSpawn = ExtResource("4_iotsf")
 
 [node name="Crate" parent="." instance=ExtResource("7_vef74")]
-position = Vector2(1375, 1641)
+position = Vector2(1381, 1627)
 objToSpawn = ExtResource("5_ryrav")
+
+[node name="Crate2" parent="." instance=ExtResource("7_vef74")]
+position = Vector2(1420, 1626)
+objToSpawn = ExtResource("10_e36ub")
 
 [node name="Dragon" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_7jktm")]
 position = Vector2(1716, 1018)
@@ -120,6 +125,7 @@ maxHealth = 100
 position = Vector2(1623, 1859)
 
 [node name="Area2D" parent="." instance=ExtResource("5_ryrav")]
+visible = false
 position = Vector2(1096, 1768)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -425,6 +431,7 @@ size_flags_horizontal = 3
 theme_override_styles/fill = SubResource("StyleBoxFlat_j5wjh")
 max_value = 1.0
 value = 1.0
+show_percentage = false
 script = ExtResource("7_eow3j")
 
 [node name="PlayerHealthBar" type="ProgressBar" parent="CanvasLayer"]
