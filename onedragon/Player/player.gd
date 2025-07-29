@@ -26,6 +26,8 @@ func _ready() -> void:
 		weaponAttachementsL.append(attachement)
 
 func _physics_process(delta: float) -> void:
+	if health <= 0:
+		return
 	if _canAttackR && Input.is_action_just_pressed("attack1") && weaponListR.size() > 0:
 		attackR()
 	if _canAttackL && Input.is_action_just_pressed("attack2") && weaponListL.size() > 0:
@@ -47,10 +49,12 @@ func up_max_health(v) -> void:
 func up_dash_dist(v) -> void:
 	Globals.play_sound("heal")
 	controller.dashSpeed *= v
+	print(controller.dashSpeed)
 
 func up_dash_speed(v) -> void:
 	Globals.play_sound("heal")
 	controller.dashRecoveryTime *= v
+	print(controller.dashRecoveryTime)
 
 func unequip(weapon, isRightHand) -> void:
 	if isRightHand:

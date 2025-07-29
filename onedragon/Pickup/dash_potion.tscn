@@ -8,8 +8,8 @@ atlas = ExtResource("2_gbhn3")
 region = Rect2(160, 256, 32, 32)
 
 [node name="dash_potion" instance=ExtResource("1_fc1l1")]
-action = "up_dash_dist"
-power = 1.1
+action = "up_dash_speed"
+power = 0.9
 
 [node name="Sprite2D" parent="." index="1"]
 texture = SubResource("AtlasTexture_1ife3")

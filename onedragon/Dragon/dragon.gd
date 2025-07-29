@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Dragon
 
 
-const SPEED = 200.0
+const SPEED = 100.0
 const ATTACK_MIN_WAIT_TIME = 3
 const ATTACK_MAX_WAIT_TIME = 6
 const FIREBALL = preload("res://Dragon/fireball.tscn")
@@ -44,6 +44,8 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	
+	if health <= 0:
+		return
 	if follow_area.get_overlapping_bodies().has(player.controller):
 		if not has_target:
 			has_target = true
@@ -61,7 +63,8 @@ func _physics_process(_delta: float) -> void:
 
 
 func _process(delta: float) -> void:
-
+	if health <= 0:
+		return
 	if velocity:
 		if velocity.angle() > -PI/4  and velocity.angle() < PI/4:
 			animated_sprite_2d.play("walk_right")
