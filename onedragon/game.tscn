@@ -322,7 +322,7 @@ animation = &"flame"
 
 [node name="Torch33" type="AnimatedSprite2D" parent="Sprite2D"]
 z_index = 1
-position = Vector2(1962, 974)
+position = Vector2(1954, 623)
 sprite_frames = SubResource("SpriteFrames_7sc4i")
 animation = &"flame"
 

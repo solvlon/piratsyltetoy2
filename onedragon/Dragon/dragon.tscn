@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://q3m8am276760"]
+[gd_scene load_steps=52 format=3 uid="uid://q3m8am276760"]
 
 [ext_resource type="Script" uid="uid://chrscg7be4ah2" path="res://Dragon/dragon.gd" id="1_80mar"]
 [ext_resource type="Texture2D" uid="uid://cl530wg523wio" path="res://assets/tiny-dungon/tilemap.png" id="1_wq5gb"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://q025xoulx3j" path="res://assets/walk_and_attack/b2.png" id="19_kelsp"]
 [ext_resource type="Texture2D" uid="uid://cwnewiajraod" path="res://assets/walk_and_attack/b3.png" id="20_2nskc"]
 [ext_resource type="Texture2D" uid="uid://c8tshfa4h4mym" path="res://assets/walk_and_attack/b4.png" id="21_xfcr6"]
+[ext_resource type="Texture2D" uid="uid://pclb6cfj5ajg" path="res://assets/particles/SmokePuffParticleSheet.png" id="23_d5a0m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_80mar"]
 radius = 15.0
@@ -176,6 +177,12 @@ scale_min = 0.4
 scale_curve = SubResource("CurveTexture_u2dun")
 color_ramp = SubResource("GradientTexture1D_kar7i")
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_i35l8"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 5
+particles_anim_loop = false
+
 [sub_resource type="Curve" id="Curve_pl6bp"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.360294, 0.764045), 0.0, 0.0, 0, 0, Vector2(0.455882, 0.011236), -3.48262, 0.0, 0, 0]
 point_count = 3
@@ -190,6 +197,8 @@ initial_velocity_min = 926.17
 initial_velocity_max = 1000.0
 gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_kar7i")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
 
 [sub_resource type="Animation" id="Animation_u2dun"]
 resource_name = "Hit"
@@ -454,8 +463,9 @@ explosiveness = 0.53
 process_material = SubResource("ParticleProcessMaterial_8jrqu")
 
 [node name="SpinParticles" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_i35l8")
 amount = 10
-texture = ExtResource("3_pl6bp")
+texture = ExtResource("23_d5a0m")
 one_shot = true
 explosiveness = 0.51
 process_material = SubResource("ParticleProcessMaterial_cjlra")

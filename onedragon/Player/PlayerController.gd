@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name PlayerController
 
 @export var moveSpeed = 150.0
-@export var dashSpeed = 0.5
+@export var dashSpeed = 0.7
 @export var dashSpeedMultiplier = 1.0
 @export var dashRecoveryTime = 1.0
 @export var pushRecovery = 10.0
@@ -76,7 +76,6 @@ func dash() -> void:
 
 func play_attack() -> void:
 	_isAttacking = true
-	print(str("Attack", _animDir, animWeap))
 	sprite.play(str("Attack", _animDir, animWeap))
 	
 

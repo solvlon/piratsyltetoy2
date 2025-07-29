@@ -6,6 +6,8 @@ const SPEED = 100.0
 const ATTACK_MIN_WAIT_TIME = 3
 const ATTACK_MAX_WAIT_TIME = 6
 const FIREBALL = preload("res://Dragon/fireball.tscn")
+const CLAW_ATTACK_DIST = 100
+const SWIPE_ATTACK_DIST = 200
 
 
 @export var player : Player
@@ -131,7 +133,8 @@ func _tile_swipe_attack(player):
 	Globals.play_sound("dragon_growl")
 	Globals.play_sound("tail_swipe")
 	await  animation_player.animation_finished
-	player.on_hit(60, (player.controller.global_position - global_position).normalized() * 500)
+	if player.controller.global_position.distance_to(global_position) <= SWIPE_ATTACK_DIST:
+		player.on_hit(60, (player.controller.global_position - global_position).normalized() * 500)
 	_is_attacking = false
 	
 func _claw_attack(player):
@@ -140,8 +143,9 @@ func _claw_attack(player):
 	tween.tween_property(animated_sprite_2d,"position",position.direction_to(player.global_position) * 20, 0.1) 
 	tween.tween_property(animated_sprite_2d,"position",Vector2.ZERO, 0.4) 
 	Globals.play_sound("dragon_growl")
-	player.on_hit(80, (player.controller.global_position - global_position).normalized() * 500)
 	await  tween.finished
+	if player.controller.global_position.distance_to(global_position) <= CLAW_ATTACK_DIST:
+		player.on_hit(80, (player.controller.global_position - global_position).normalized() * 500)
 	_is_attacking = false
 	
 func on_hit(hitpoints, force):
