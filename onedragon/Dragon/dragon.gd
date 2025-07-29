@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Dragon
 
 
-const SPEED = 100.0
+const SPEED = 80.0
 const ATTACK_MIN_WAIT_TIME = 3
 const ATTACK_MAX_WAIT_TIME = 6
 const FIREBALL = preload("res://Dragon/fireball.tscn")
