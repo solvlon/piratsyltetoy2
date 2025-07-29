@@ -1,7 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://bt3ho1345fdb0"]
+[gd_scene load_steps=10 format=3 uid="uid://bt3ho1345fdb0"]
 
 [ext_resource type="PackedScene" uid="uid://cr4vcrlw6thu5" path="res://BreakableCrate/crate.tscn" id="1_2q1l5"]
+[ext_resource type="PackedScene" uid="uid://bkmy81nlbm8f8" path="res://Player/Weapon/axe.tscn" id="2_hi1ru"]
 [ext_resource type="Texture2D" uid="uid://b636wksbchtes" path="res://assets/tilemapandsprites.png" id="2_q3s2t"]
+[ext_resource type="PackedScene" uid="uid://b57rdqpd1sjvj" path="res://Player/Weapon/hammer.tscn" id="3_3wsl0"]
+[ext_resource type="PackedScene" uid="uid://b6taopqajv0hp" path="res://Player/Weapon/spear.tscn" id="4_p3tsu"]
+[ext_resource type="PackedScene" uid="uid://c5bmomsjflhrk" path="res://Player/Weapon/sword.tscn" id="5_to06v"]
+[ext_resource type="PackedScene" uid="uid://dfb4vqw26muor" path="res://Player/Weapon/wand.tscn" id="6_4ah7o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_37isb"]
 atlas = ExtResource("2_q3s2t")
@@ -14,6 +19,7 @@ region = Rect2(96, 256, 32, 32)
 [node name="Chest" instance=ExtResource("1_2q1l5")]
 collision_layer = 48
 collision_mask = 48
+objToSpawn = Array[PackedScene]([ExtResource("2_hi1ru"), ExtResource("3_3wsl0"), ExtResource("4_p3tsu"), ExtResource("5_to06v"), ExtResource("6_4ah7o")])
 disableCollisionOnOpen = false
 soundOnOpen = "open"
 

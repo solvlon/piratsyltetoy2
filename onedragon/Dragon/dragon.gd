@@ -99,9 +99,9 @@ func _process(delta: float) -> void:
 func _on_attack_cooldown_timeout():
 	
 	if claw_attack_area.get_overlapping_bodies().has(player.controller):
-		_claw_attack()
+		_claw_attack(player)
 	elif tile_swipe_area.get_overlapping_bodies().has(player.controller):
-		_tile_swipe_attack()
+		_tile_swipe_attack(player)
 	elif fire_attack_area.get_overlapping_bodies().has(player.controller):
 		_fire_attack()
 	
@@ -122,20 +122,22 @@ func _fire_attack():
 	await  get_tree().create_timer(.5).timeout
 	_is_attacking = false
 
-func _tile_swipe_attack():
+func _tile_swipe_attack(player):
 	_is_attacking = true
 	animation_player.play("TileSwipeAttack")
 	Globals.play_sound("dragon_growl")
 	Globals.play_sound("tail_swipe")
 	await  animation_player.animation_finished
+	player.on_hit(60, (player.controller.global_position - global_position).normalized() * 500)
 	_is_attacking = false
 	
-func _claw_attack():
+func _claw_attack(player):
 	_is_attacking = true
 	var tween = create_tween()
 	tween.tween_property(animated_sprite_2d,"position",position.direction_to(player.global_position) * 20, 0.1) 
 	tween.tween_property(animated_sprite_2d,"position",Vector2.ZERO, 0.4) 
 	Globals.play_sound("dragon_growl")
+	player.on_hit(80, (player.controller.global_position - global_position).normalized() * 500)
 	await  tween.finished
 	_is_attacking = false
 	

@@ -1,7 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cr4vcrlw6thu5"]
+[gd_scene load_steps=10 format=3 uid="uid://cr4vcrlw6thu5"]
 
 [ext_resource type="Script" uid="uid://d4bcrxsvjmc5f" path="res://BreakableCrate/breakable_crate.gd" id="1_o1kmq"]
+[ext_resource type="PackedScene" uid="uid://cubfii0ct35jf" path="res://Pickup/apple.tscn" id="2_8joid"]
 [ext_resource type="Texture2D" uid="uid://b636wksbchtes" path="res://assets/tilemapandsprites.png" id="2_nvald"]
+[ext_resource type="PackedScene" uid="uid://bqmagwbi186j1" path="res://Pickup/dash_dist_potion.tscn" id="3_oti8i"]
+[ext_resource type="PackedScene" uid="uid://crhjdng2p0nk8" path="res://Pickup/dash_potion.tscn" id="4_ymy8e"]
+[ext_resource type="PackedScene" uid="uid://0icwersopt64" path="res://Pickup/health_potion.tscn" id="5_r4pxy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_id1dt"]
 atlas = ExtResource("2_nvald")
@@ -12,13 +16,14 @@ atlas = ExtResource("2_nvald")
 region = Rect2(32, 256, 32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8joid"]
-size = Vector2(19, 15)
+size = Vector2(20, 24)
 
 [node name="Crate" type="RigidBody2D"]
 collision_layer = 18
 collision_mask = 18
 freeze = true
 script = ExtResource("1_o1kmq")
+objToSpawn = Array[PackedScene]([ExtResource("2_8joid"), ExtResource("3_oti8i"), ExtResource("4_ymy8e"), ExtResource("5_r4pxy")])
 
 [node name="Normal" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_id1dt")

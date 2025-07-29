@@ -1,14 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://ov8pcp2t75av"]
+[gd_scene load_steps=21 format=3 uid="uid://ov8pcp2t75av"]
 
 [ext_resource type="PackedScene" uid="uid://caidnjvy8yfg7" path="res://Player/player.tscn" id="2_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://daoaagl7kep0v" path="res://Camera/player_camera.tscn" id="3_7jktm"]
 [ext_resource type="PackedScene" uid="uid://bt3ho1345fdb0" path="res://BreakableCrate/chest.tscn" id="3_mfdv2"]
 [ext_resource type="PackedScene" uid="uid://b6mnbbiykjeex" path="res://Map/map.tscn" id="4_fc0e3"]
-[ext_resource type="PackedScene" uid="uid://b57rdqpd1sjvj" path="res://Player/Weapon/hammer.tscn" id="4_iotsf"]
 [ext_resource type="PackedScene" uid="uid://q3m8am276760" path="res://Dragon/dragon.tscn" id="5_7jktm"]
-[ext_resource type="PackedScene" uid="uid://b6taopqajv0hp" path="res://Player/Weapon/spear.tscn" id="5_215e1"]
 [ext_resource type="PackedScene" uid="uid://bqqfigd4njdv4" path="res://Pickup/PickupItem.tscn" id="5_ryrav"]
-[ext_resource type="PackedScene" uid="uid://c5bmomsjflhrk" path="res://Player/Weapon/sword.tscn" id="6_7sc4i"]
 [ext_resource type="Script" uid="uid://brgaq6x6xo6k3" path="res://Map/animate.gd" id="6_iotsf"]
 [ext_resource type="Script" uid="uid://ckl05ly2j5xb4" path="res://Dragon/dragon_health_bar.gd" id="7_eow3j"]
 [ext_resource type="Texture2D" uid="uid://c24u7udrm833m" path="res://Animated_Sprites/torch1.png" id="7_iotsf"]
@@ -18,8 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://d086lujov4nn8" path="res://Animated_Sprites/torch3.png" id="9_215e1"]
 [ext_resource type="PackedScene" uid="uid://bkmy81nlbm8f8" path="res://Player/Weapon/axe.tscn" id="9_vef74"]
 [ext_resource type="Texture2D" uid="uid://cc6odf06rxphj" path="res://Animated_Sprites/torch4.png" id="10_7sc4i"]
-[ext_resource type="PackedScene" uid="uid://bqmagwbi186j1" path="res://Pickup/dash_dist_potion.tscn" id="10_e36ub"]
 [ext_resource type="PackedScene" uid="uid://c8llsj1o752lc" path="res://AudioPlayer/polyphonic_audio_player.tscn" id="12_iotsf"]
+[ext_resource type="Texture2D" uid="uid://bjfl6bhy6m4o3" path="res://assets/victory.png" id="20_hb5m1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7sc4i"]
 animations = [{
@@ -53,68 +50,53 @@ bg_color = Color(0, 0.817151, 0.862997, 1)
 
 [node name="PlayerCamera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_7jktm")]
 position = Vector2(1278, 612)
-zoom = Vector2(4, 4)
+zoom = Vector2(3, 3)
 player = NodePath("../Player")
 
 [node name="Chest" parent="." instance=ExtResource("3_mfdv2")]
 position = Vector2(112, 68)
-objToSpawn = ExtResource("4_iotsf")
 
 [node name="Chest2" parent="." instance=ExtResource("3_mfdv2")]
 position = Vector2(1166, 877)
-objToSpawn = ExtResource("4_iotsf")
 
 [node name="Chest3" parent="." instance=ExtResource("3_mfdv2")]
 position = Vector2(2938, 393)
-objToSpawn = ExtResource("4_iotsf")
 
 [node name="Chest4" parent="." instance=ExtResource("3_mfdv2")]
 position = Vector2(2857, 1919)
-objToSpawn = ExtResource("4_iotsf")
 
 [node name="Chest5" parent="." instance=ExtResource("3_mfdv2")]
 position = Vector2(1465, 530)
-objToSpawn = ExtResource("5_215e1")
 
 [node name="Chest6" parent="." instance=ExtResource("3_mfdv2")]
 position = Vector2(2586, 496)
-objToSpawn = ExtResource("4_iotsf")
 
 [node name="Chest7" parent="." instance=ExtResource("3_mfdv2")]
 position = Vector2(854, 104)
-objToSpawn = ExtResource("6_7sc4i")
 
 [node name="Chest8" parent="." instance=ExtResource("3_mfdv2")]
 position = Vector2(2848, 26)
-objToSpawn = ExtResource("4_iotsf")
 
 [node name="Chest9" parent="." instance=ExtResource("3_mfdv2")]
 position = Vector2(2401, 1285)
-objToSpawn = ExtResource("4_iotsf")
 
 [node name="Chest10" parent="." instance=ExtResource("3_mfdv2")]
 position = Vector2(301, 360)
-objToSpawn = ExtResource("9_vef74")
 
 [node name="Chest11" parent="." instance=ExtResource("3_mfdv2")]
 position = Vector2(1251, 1293)
-objToSpawn = ExtResource("4_iotsf")
 
 [node name="Chest12" parent="." instance=ExtResource("3_mfdv2")]
 position = Vector2(789, 1640)
-objToSpawn = ExtResource("4_iotsf")
 
 [node name="Chest13" parent="." instance=ExtResource("3_mfdv2")]
 position = Vector2(1775, 1439)
-objToSpawn = ExtResource("4_iotsf")
 
 [node name="Crate" parent="." instance=ExtResource("7_vef74")]
 position = Vector2(1381, 1627)
-objToSpawn = ExtResource("5_ryrav")
 
 [node name="Crate2" parent="." instance=ExtResource("7_vef74")]
 position = Vector2(1420, 1626)
-objToSpawn = ExtResource("10_e36ub")
 
 [node name="Dragon" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_7jktm")]
 position = Vector2(1716, 1018)
@@ -458,7 +440,17 @@ fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Victory" type="TextureRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("20_hb5m1")
+expand_mode = 3
+
 [node name="Axe" parent="." instance=ExtResource("9_vef74")]
-position = Vector2(1620, 1820)
+position = Vector2(1623, 1857)
 
 [node name="AudioPlayer" parent="." instance=ExtResource("12_iotsf")]

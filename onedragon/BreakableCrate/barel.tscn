@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://0m5touwmut06"]
+
+[ext_resource type="PackedScene" uid="uid://cr4vcrlw6thu5" path="res://BreakableCrate/crate.tscn" id="1_ymedp"]
+[ext_resource type="Texture2D" uid="uid://b636wksbchtes" path="res://assets/tilemapandsprites.png" id="2_rvgnj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fldy2"]
+atlas = ExtResource("2_rvgnj")
+region = Rect2(0, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atj8l"]
+atlas = ExtResource("2_rvgnj")
+region = Rect2(32, 224, 32, 32)
+
+[node name="Barel" instance=ExtResource("1_ymedp")]
+
+[node name="Normal" parent="." index="0"]
+texture = SubResource("AtlasTexture_fldy2")
+
+[node name="Destroyed" parent="." index="1"]
+texture = SubResource("AtlasTexture_atj8l")
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(1, 1)

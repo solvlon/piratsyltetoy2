@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-@export var objToSpawn: PackedScene
+@export var objToSpawn: Array[PackedScene]
 @export var disableCollisionOnOpen = true
 @export var soundOnOpen = "break"
 
@@ -23,6 +23,6 @@ func on_hit(power, force):
 		# disable collisions with weapon
 		collision_layer = 32
 		collision_mask = 32
-	var obj = objToSpawn.instantiate()
+	var obj = objToSpawn[randf_range(0, objToSpawn.size())].instantiate()
 	get_parent().add_child(obj)
 	obj.global_position = global_position

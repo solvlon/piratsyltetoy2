@@ -383,8 +383,6 @@ region_rect = Rect2(61.2566, 287.552, 35.5167, 31.4186)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_cjlra")
 sprite_frames = SubResource("SpriteFrames_8wxud")
-animation = &"walk_up"
-frame_progress = 0.00330189
 
 [node name="fireballSpawn_left" type="Node2D" parent="AnimatedSprite2D"]
 unique_name_in_owner = true
