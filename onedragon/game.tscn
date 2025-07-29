@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ov8pcp2t75av"]
+[gd_scene load_steps=22 format=3 uid="uid://ov8pcp2t75av"]
 
 [ext_resource type="PackedScene" uid="uid://caidnjvy8yfg7" path="res://Player/player.tscn" id="2_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://daoaagl7kep0v" path="res://Camera/player_camera.tscn" id="3_7jktm"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bkmy81nlbm8f8" path="res://Player/Weapon/axe.tscn" id="9_vef74"]
 [ext_resource type="Texture2D" uid="uid://cc6odf06rxphj" path="res://Animated_Sprites/torch4.png" id="10_7sc4i"]
 [ext_resource type="PackedScene" uid="uid://c8llsj1o752lc" path="res://AudioPlayer/polyphonic_audio_player.tscn" id="12_iotsf"]
+[ext_resource type="Texture2D" uid="uid://cjcdepkonve1l" path="res://assets/defeat.png" id="16_rvswv"]
 [ext_resource type="Texture2D" uid="uid://bjfl6bhy6m4o3" path="res://assets/victory.png" id="20_hb5m1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7sc4i"]
@@ -448,6 +449,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("20_hb5m1")
+expand_mode = 3
+
+[node name="Defeat" type="TextureRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("16_rvswv")
 expand_mode = 3
 
 [node name="Axe" parent="." instance=ExtResource("9_vef74")]
