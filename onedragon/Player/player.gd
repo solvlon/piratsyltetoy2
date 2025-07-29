@@ -45,9 +45,11 @@ func up_max_health(v) -> void:
 	health += v
 
 func up_dash_dist(v) -> void:
+	Globals.play_sound("heal")
 	controller.dashSpeed *= v
 
 func up_dash_speed(v) -> void:
+	Globals.play_sound("heal")
 	controller.dashRecoveryTime *= v
 
 func unequip(weapon, isRightHand) -> void:

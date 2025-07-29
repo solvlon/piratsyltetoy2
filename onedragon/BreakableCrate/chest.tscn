@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b57rdqpd1sjvj" path="res://Player/Weapon/hammer.tscn" id="3_3wsl0"]
 [ext_resource type="PackedScene" uid="uid://b6taopqajv0hp" path="res://Player/Weapon/spear.tscn" id="4_p3tsu"]
 [ext_resource type="PackedScene" uid="uid://c5bmomsjflhrk" path="res://Player/Weapon/sword.tscn" id="5_to06v"]
-[ext_resource type="PackedScene" uid="uid://dfb4vqw26muor" path="res://Player/Weapon/wand.tscn" id="6_4ah7o"]
+[ext_resource type="PackedScene" path="res://Player/Weapon/wand.tscn" id="6_4ah7o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_37isb"]
 atlas = ExtResource("2_q3s2t")
