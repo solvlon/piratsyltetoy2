@@ -14,6 +14,8 @@ const SPEED = 300
 var move_direction : Vector2
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 var _moving = false
+
+
 func _ready() -> void:
 	spawn_animated_sprite_2d.play("default")
 	sprite_2d.hide()

@@ -1,20 +1,32 @@
-[gd_scene load_steps=52 format=3 uid="uid://q3m8am276760"]
+[gd_scene load_steps=63 format=3 uid="uid://q3m8am276760"]
 
 [ext_resource type="Script" uid="uid://chrscg7be4ah2" path="res://Dragon/dragon.gd" id="1_80mar"]
 [ext_resource type="Texture2D" uid="uid://cl530wg523wio" path="res://assets/tiny-dungon/tilemap.png" id="1_wq5gb"]
 [ext_resource type="Shader" uid="uid://b6cvhsu7eivt3" path="res://Player/hittable.gdshader" id="2_kar7i"]
 [ext_resource type="Texture2D" uid="uid://bvo0t2uk1febt" path="res://icon.svg" id="3_pl6bp"]
+[ext_resource type="Texture2D" uid="uid://dyy3nofeqo3dd" path="res://assets/walk_and_attack/tf1.png" id="4_nsle7"]
 [ext_resource type="Texture2D" uid="uid://cj3m7ea5l8g60" path="res://assets/walk_and_attack/f1.png" id="4_qatnp"]
+[ext_resource type="Texture2D" uid="uid://be7kl01d5k5ft" path="res://assets/walk_and_attack/tf2.png" id="5_cmt6j"]
 [ext_resource type="Texture2D" uid="uid://bgk0j6pwadwj2" path="res://assets/walk_and_attack/f2.png" id="5_d5a0m"]
 [ext_resource type="Texture2D" uid="uid://dukp31tyjd1o0" path="res://assets/walk_and_attack/f3.png" id="6_i35l8"]
+[ext_resource type="Texture2D" uid="uid://duvth5wl5lpdt" path="res://assets/walk_and_attack/tf3.png" id="6_kelsp"]
+[ext_resource type="Texture2D" uid="uid://bfw7qyt4i5cni" path="res://assets/walk_and_attack/tf4.png" id="7_2nskc"]
 [ext_resource type="Texture2D" uid="uid://c1ma4klft6r5b" path="res://assets/walk_and_attack/f4.png" id="7_y278k"]
 [ext_resource type="Texture2D" uid="uid://bpjndcmangbxw" path="res://assets/walk_and_attack/f5.png" id="8_ukke7"]
+[ext_resource type="Texture2D" uid="uid://ci4vsauo6dorn" path="res://assets/walk_and_attack/ts1.png" id="8_xfcr6"]
+[ext_resource type="Texture2D" uid="uid://mqqptid6ju63" path="res://assets/walk_and_attack/ts2.png" id="9_8wxud"]
 [ext_resource type="Texture2D" uid="uid://b7ui4swvuv1hk" path="res://assets/walk_and_attack/1.png" id="9_gvbe5"]
 [ext_resource type="Texture2D" uid="uid://27pd5ogljhng" path="res://assets/walk_and_attack/2.png" id="10_3hyc2"]
+[ext_resource type="Texture2D" uid="uid://b2hs1fct8v61h" path="res://assets/walk_and_attack/ts3.png" id="10_230s6"]
 [ext_resource type="Texture2D" uid="uid://cyguh1amdx8rv" path="res://assets/walk_and_attack/3.png" id="11_fuy3p"]
+[ext_resource type="Texture2D" uid="uid://rr6kkgfnek5a" path="res://assets/walk_and_attack/ts4.png" id="11_nh0j8"]
 [ext_resource type="Texture2D" uid="uid://yb4s85vlukrn" path="res://assets/walk_and_attack/4.png" id="12_g7psj"]
+[ext_resource type="Texture2D" uid="uid://c3tsfmq76ylqf" path="res://assets/walk_and_attack/tb1.png" id="12_xm0yh"]
+[ext_resource type="Texture2D" uid="uid://bipjvn3fewkig" path="res://assets/walk_and_attack/tb2.png" id="13_805ow"]
 [ext_resource type="Texture2D" uid="uid://cb0l2uj1crhjc" path="res://assets/walk_and_attack/5.png" id="13_yc10c"]
+[ext_resource type="Texture2D" uid="uid://cgp2agai382bm" path="res://assets/walk_and_attack/tb3.png" id="14_5ufgn"]
 [ext_resource type="Texture2D" uid="uid://p84n13w2bfpg" path="res://assets/walk_and_attack/6.png" id="14_13kkn"]
+[ext_resource type="Texture2D" uid="uid://bc13uqusi24sj" path="res://assets/walk_and_attack/tb4.png" id="15_02q5m"]
 [ext_resource type="Texture2D" uid="uid://dbjr5sbeo43xw" path="res://assets/walk_and_attack/7.png" id="15_em4ju"]
 [ext_resource type="Texture2D" uid="uid://cer0kypedcfy8" path="res://assets/walk_and_attack/8.png" id="16_ipxbw"]
 [ext_resource type="Texture2D" uid="uid://duoyusni7fpqk" path="res://assets/walk_and_attack/9.png" id="17_nsle7"]
@@ -49,6 +61,57 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_nsle7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cmt6j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kelsp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2nskc")
+}],
+"loop": true,
+"name": &"tile_swipe_down",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_xfcr6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_8wxud")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_230s6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_nh0j8")
+}],
+"loop": true,
+"name": &"tile_swipe_side",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_xm0yh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_805ow")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_5ufgn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_02q5m")
+}],
+"loop": true,
+"name": &"tile_swipe_up",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -124,13 +187,10 @@ animations = [{
 radius = 482.009
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pl6bp"]
-radius = 354.203
+radius = 245.018
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kar7i"]
-radius = 165.747
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_cjlra"]
-radius = 84.9294
+radius = 48.0416
 
 [sub_resource type="Gradient" id="Gradient_kar7i"]
 offsets = PackedFloat32Array(0, 0.227273, 0.545455, 0.872727, 1)
@@ -368,8 +428,8 @@ _data = {
 }
 
 [node name="Dragon" type="CharacterBody2D"]
-collision_layer = 5
-collision_mask = 5
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("1_80mar")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -392,6 +452,8 @@ region_rect = Rect2(61.2566, 287.552, 35.5167, 31.4186)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_cjlra")
 sprite_frames = SubResource("SpriteFrames_8wxud")
+animation = &"tile_swipe_down"
+frame_progress = 0.0338903
 
 [node name="fireballSpawn_left" type="Node2D" parent="AnimatedSprite2D"]
 unique_name_in_owner = true
@@ -435,12 +497,6 @@ unique_name_in_owner = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="TileSwipeArea"]
 shape = SubResource("CircleShape2D_kar7i")
-
-[node name="ClawAttackArea" type="Area2D" parent="."]
-unique_name_in_owner = true
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="ClawAttackArea"]
-shape = SubResource("CircleShape2D_cjlra")
 
 [node name="FireParticles" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true

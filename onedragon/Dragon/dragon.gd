@@ -16,13 +16,13 @@ var health
 
 var _is_attacking = false
 var _spawn_position
-
+var _taile_hit_cooldown = false
 
 @onready var navigation_agent_2d: NavigationAgent2D = %NavigationAgent2D
 @onready var attack_cooldown: Timer = $AttackCooldown
 @onready var fire_attack_area: Area2D = %FireAttackArea
 @onready var tile_swipe_area: Area2D = %TileSwipeArea
-@onready var claw_attack_area: Area2D = %ClawAttackArea
+#@onready var claw_attack_area: Area2D = %ClawAttackArea
 @onready var fire_particles: GPUParticles2D = %FireParticles
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 #@onready var sprite_2d: Sprite2D = %Sprite2D
@@ -38,6 +38,7 @@ var _spawn_position
 var _fliped = false
 var fireball_spawn : Node2D = fireball_spawn_left
 var has_target := false
+var _tile_swiping = false
 
 func _ready() -> void:
 	health = maxHealth
@@ -65,47 +66,62 @@ func _physics_process(_delta: float) -> void:
 
 
 func _process(delta: float) -> void:
+	print ("tileswiping ", _tile_swiping)
 	if health <= 0:
 		return
-	if velocity:
-		if velocity.angle() > -PI/4  and velocity.angle() < PI/4:
+		
+	if velocity.angle() > -PI/4  and velocity.angle() < PI/4:
+		if _tile_swiping:
+			animated_sprite_2d.play("tile_swipe_side")
+		else : 
 			animated_sprite_2d.play("walk_right")
-			
-			if  _fliped:
-				print ("right")
-				animated_sprite_2d.scale.x *= -1
-				_fliped = false
-			fireball_spawn = fireball_spawn_right
-			#rotation = 0
-		if velocity.angle() > PI/4  and velocity.angle() < 3*PI/4:
+		
+		if  _fliped:
+			animated_sprite_2d.scale.x *= -1
+			_fliped = false
+		fireball_spawn = fireball_spawn_right
+		#rotation = 0
+	if velocity.angle() > PI/4  and velocity.angle() < 3*PI/4:
+		if _tile_swiping:
+			animated_sprite_2d.play("tile_swipe_down")
+		else : 
 			animated_sprite_2d.play("walk_down")
-			if  _fliped:
-				animated_sprite_2d.scale.x *=  -1
-				_fliped = false
-			fireball_spawn = fireball_spawn_down
-			#rotation = 0
-		if velocity.angle() > 3*PI/4  or velocity.angle() < -3*PI/4:
-			
+		if  _fliped:
+			animated_sprite_2d.scale.x *=  -1
+			_fliped = false
+		fireball_spawn = fireball_spawn_down
+		#rotation = 0
+	if velocity.angle() > 3*PI/4  or velocity.angle() < -3*PI/4:
+		if _tile_swiping:
+			animated_sprite_2d.play("tile_swipe_side")
+		else : 
 			animated_sprite_2d.play("walk_right")
-			if not _fliped:
-				print ("left")
-				animated_sprite_2d.scale.x *=  -1
-				_fliped = true
-			fireball_spawn = fireball_spawn_left
-			
-		if velocity.angle() < -PI/4  and velocity.angle() > -3*PI/4:
+		if not _fliped:
+			animated_sprite_2d.scale.x *=  -1
+			_fliped = true
+		fireball_spawn = fireball_spawn_left
+		
+	if velocity.angle() < -PI/4  and velocity.angle() > -3*PI/4:
+		if _tile_swiping:
+			animated_sprite_2d.play("tile_swipe_up")
+		else : 
 			animated_sprite_2d.play("walk_up")
-			if  _fliped:
-				animated_sprite_2d.scale.x *=  -1
-				_fliped = false
-			fireball_spawn = fireball_spawn_up
+		if  _fliped:
+			animated_sprite_2d.scale.x *=  -1
+			_fliped = false
+		fireball_spawn = fireball_spawn_up
 		#print(_fliped)
 
+	if _tile_swiping :
+		if not _taile_hit_cooldown: 
+			if tile_swipe_area.get_overlapping_bodies().has(player.controller):
+				player.on_hit(10,global_position.direction_to(player.controller.position)*500)
+				_taile_hit_cooldown = true
+	else :
+		_taile_hit_cooldown = false		
 func _on_attack_cooldown_timeout():
 	
-	if claw_attack_area.get_overlapping_bodies().has(player.controller):
-		_claw_attack(player)
-	elif tile_swipe_area.get_overlapping_bodies().has(player.controller):
+	if tile_swipe_area.get_overlapping_bodies().has(player.controller):
 		_tile_swipe_attack(player)
 	elif fire_attack_area.get_overlapping_bodies().has(player.controller):
 		_fire_attack()
@@ -114,6 +130,7 @@ func _on_attack_cooldown_timeout():
 
 func _fire_attack():
 	_is_attacking = true
+	
 	#fire_pre_particles.emitting = true
 	#await fire_pre_particles.finished
 	#fire_particles.emitting = true
@@ -127,26 +144,40 @@ func _fire_attack():
 	await  get_tree().create_timer(.5).timeout
 	_is_attacking = false
 
+
+	
 func _tile_swipe_attack(player):
 	_is_attacking = true
-	animation_player.play("TileSwipeAttack")
-	Globals.play_sound("dragon_growl")
-	Globals.play_sound("tail_swipe")
-	await  animation_player.animation_finished
-	if player.controller.global_position.distance_to(global_position) <= SWIPE_ATTACK_DIST:
-		player.on_hit(60, (player.controller.global_position - global_position).normalized() * 500)
-	_is_attacking = false
-	
-func _claw_attack(player):
-	_is_attacking = true
+	Globals.play_sound("readying_tail")
 	var tween = create_tween()
-	tween.tween_property(animated_sprite_2d,"position",position.direction_to(player.global_position) * 20, 0.1) 
-	tween.tween_property(animated_sprite_2d,"position",Vector2.ZERO, 0.4) 
-	Globals.play_sound("dragon_growl")
-	await  tween.finished
-	if player.controller.global_position.distance_to(global_position) <= CLAW_ATTACK_DIST:
-		player.on_hit(80, (player.controller.global_position - global_position).normalized() * 500)
+	tween.tween_property(animated_sprite_2d,"scale",Vector2.ONE*1.3, 0.5)
+	tween.tween_property(animated_sprite_2d,"scale",Vector2.ONE, 0.5)
+	await tween.finished
+	Globals.play_sound("tail_swipe")
+	_tile_swiping = true
+	await get_tree().create_timer(3).timeout
+	_tile_swiping = false
 	_is_attacking = false
+	#_tile_swiping = false
+	#_is_attacking = true
+	#animation_player.play("TileSwipeAttack")
+	#Globals.play_sound("dragon_growl")
+	#Globals.play_sound("tail_swipe")
+	#await  animation_player.animation_finished
+	#if player.controller.global_position.distance_to(global_position) <= SWIPE_ATTACK_DIST:
+		#player.on_hit(60, (player.controller.global_position - global_position).normalized() * 500)
+	#_is_attacking = false
+	#
+#func _claw_attack(player):
+	#_is_attacking = true
+	#var tween = create_tween()
+	#tween.tween_property(animated_sprite_2d,"position",position.direction_to(player.global_position) * 20, 0.1) 
+	#tween.tween_property(animated_sprite_2d,"position",Vector2.ZERO, 0.4) 
+	#Globals.play_sound("dragon_growl")
+	#await  tween.finished
+	#if player.controller.global_position.distance_to(global_position) <= CLAW_ATTACK_DIST:
+		#player.on_hit(80, (player.controller.global_position - global_position).normalized() * 500)
+	#_is_attacking = false
 	
 func on_hit(hitpoints, force):
 	health -= hitpoints
