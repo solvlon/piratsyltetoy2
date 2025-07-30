@@ -8,6 +8,7 @@ const ATTACK_MAX_WAIT_TIME = 6
 const FIREBALL = preload("res://Dragon/fireball.tscn")
 const CLAW_ATTACK_DIST = 100
 const SWIPE_ATTACK_DIST = 200
+const TILE_SWIPE_DAMAGE = 70
 
 
 @export var player : Player
@@ -115,7 +116,7 @@ func _process(delta: float) -> void:
 	if _tile_swiping :
 		if not _taile_hit_cooldown: 
 			if tile_swipe_area.get_overlapping_bodies().has(player.controller):
-				player.on_hit(10,global_position.direction_to(player.controller.position)*500)
+				player.on_hit(TILE_SWIPE_DAMAGE,global_position.direction_to(player.controller.position)*500)
 				_taile_hit_cooldown = true
 	else :
 		_taile_hit_cooldown = false		
