@@ -25,6 +25,7 @@ extends Node2D
 var _isAttacking = false
 var _isGoingBack = false
 var _attackDir
+var multiplier = 1
 
 func setup(player: CharacterBody2D, attach: Node2D) -> void:
 	self.player = player
@@ -42,9 +43,10 @@ func _process(delta: float) -> void:
 		global_position = lerp(global_position, 
 			attach.global_position + player.velocity * FOLLOW_VEL_OFFSET, speed * delta)
 
-func attack() -> void:
+func attack(multiplier) -> void:
 	if _isAttacking:
 		return
+	self.multiplier = multiplier
 	
 	hitArea.set_deferred("monitoring", true)
 	# start attack
@@ -68,7 +70,7 @@ func _on_touch(body) -> void:
 	Globals.play_sound("crushed")
 	hitParticle.restart()
 	hitParticle.emitting = true
-	body.on_hit(POWER, Vector2.ZERO)
+	body.on_hit(POWER * multiplier, Vector2.ZERO)
 	usageCount = usageCount - 1
 	if usageCount == 0:
 		player.player.unequip(self, isRightHand)

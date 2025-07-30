@@ -67,7 +67,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func _process(delta: float) -> void:
-	print ("tileswiping ", _tile_swiping)
+	# print ("tileswiping ", _tile_swiping)
 	if health <= 0:
 		return
 		

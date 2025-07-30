@@ -25,17 +25,19 @@ func _process(delta: float) -> void:
 		winScreen.disabled = false
 		end = true
 	if end:
-		menu.visible = true
 		currentGamescene.queue_free()
+		menu.visible = true
 		currentGamescene = null
 		player = null
 		dragon = null
 
 func hideLoose() -> void:
+	await get_tree().create_timer(3).timeout
 	looseScreen.visible = false
 	looseScreen.disabled = true
 
 func hideWin() -> void:
+	await get_tree().create_timer(3).timeout
 	winScreen.visible = false
 	winScreen.disabled = true
 

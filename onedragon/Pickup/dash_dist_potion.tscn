@@ -9,7 +9,7 @@ region = Rect2(160, 224, 32, 32)
 
 [node name="dash_dist_potion" instance=ExtResource("1_c8v1o")]
 action = "up_dash_dist"
-power = 1.1
+power = 1.02
 
 [node name="Sprite2D" parent="." index="1"]
 texture = SubResource("AtlasTexture_m8ed7")

@@ -9,6 +9,7 @@ class_name Player
 @export var health = 100
 @export var attackPauseTime = 0.2
 @export var attackRecoveryTime = 1
+@export var attackPower = 1
 @export var maxRHandWeapons = 1
 @export var maxLHandWeapons = 1
 
@@ -55,6 +56,11 @@ func up_dash_speed(v) -> void:
 	Globals.play_sound("heal")
 	controller.dashRecoveryTime *= v
 	print(controller.dashRecoveryTime)
+
+func up_attack(v) -> void:
+	attackPower *= v
+	Globals.play_sound("heal")
+	print(attackPower)
 
 func unequip(weapon, isRightHand) -> void:
 	if isRightHand:
@@ -104,6 +110,6 @@ func attackL() -> void:
 	
 func _attack(weaponList) -> void:
 	for weapon in weaponList:
-		weapon.attack()
+		weapon.attack(attackPower)
 		await get_tree().create_timer(attackPauseTime).timeout
 	await get_tree().create_timer(attackRecoveryTime).timeout

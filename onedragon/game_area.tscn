@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://o6b4eb7m0als"]
+[gd_scene load_steps=21 format=3 uid="uid://o6b4eb7m0als"]
 
 [ext_resource type="PackedScene" uid="uid://daoaagl7kep0v" path="res://Camera/player_camera.tscn" id="1_vo5ts"]
 [ext_resource type="PackedScene" uid="uid://bt3ho1345fdb0" path="res://BreakableCrate/chest.tscn" id="2_twers"]
 [ext_resource type="PackedScene" uid="uid://cr4vcrlw6thu5" path="res://BreakableCrate/crate.tscn" id="3_4ifhc"]
 [ext_resource type="PackedScene" uid="uid://q3m8am276760" path="res://Dragon/dragon.tscn" id="4_tkan5"]
 [ext_resource type="PackedScene" uid="uid://caidnjvy8yfg7" path="res://Player/player.tscn" id="5_8mpgn"]
+[ext_resource type="PackedScene" uid="uid://0m5touwmut06" path="res://BreakableCrate/barel.tscn" id="5_twers"]
 [ext_resource type="PackedScene" uid="uid://bqqfigd4njdv4" path="res://Pickup/PickupItem.tscn" id="6_pv0x6"]
 [ext_resource type="Script" uid="uid://brgaq6x6xo6k3" path="res://Map/animate.gd" id="7_pmdf5"]
 [ext_resource type="Texture2D" uid="uid://c24u7udrm833m" path="res://Animated_Sprites/torch1.png" id="8_hfa6h"]
@@ -79,6 +80,15 @@ position = Vector2(2848, 26)
 [node name="Chest9" parent="." instance=ExtResource("2_twers")]
 position = Vector2(2401, 1285)
 
+[node name="Chest14" parent="." instance=ExtResource("2_twers")]
+position = Vector2(1738, 957)
+
+[node name="Chest15" parent="." instance=ExtResource("2_twers")]
+position = Vector2(1621, 1033)
+
+[node name="Chest16" parent="." instance=ExtResource("2_twers")]
+position = Vector2(1720, 1066)
+
 [node name="Chest10" parent="." instance=ExtResource("2_twers")]
 position = Vector2(301, 360)
 
@@ -92,15 +102,260 @@ position = Vector2(789, 1640)
 position = Vector2(1775, 1439)
 
 [node name="Crate" parent="." instance=ExtResource("3_4ifhc")]
-position = Vector2(1381, 1627)
+position = Vector2(1112, 1638)
+
+[node name="Crate3" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(1122, 1849)
+
+[node name="Crate4" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(850, 1734)
+
+[node name="Crate5" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(531, 1565)
+
+[node name="Crate6" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(276, 1748)
+
+[node name="Crate7" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(241, 1137)
+
+[node name="Crate8" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(523, 1155)
+
+[node name="Crate54" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(392, 1211)
+
+[node name="Crate55" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(943, 962)
+
+[node name="Crate9" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(300, 1247)
+
+[node name="Crate10" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(828, 925)
+
+[node name="Crate13" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(220, 684)
+
+[node name="Crate14" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(273, 510)
+
+[node name="Crate56" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(554, 394)
+
+[node name="Crate57" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(734, 558)
+
+[node name="Crate58" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(428, 479)
+
+[node name="Crate15" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(1044, 359)
+
+[node name="Crate16" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(1226, 182)
+
+[node name="Crate17" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(1587, 317)
+
+[node name="Crate18" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(1807, 494)
+
+[node name="Crate19" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(2117, 522)
+
+[node name="Crate20" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(2167, 382)
+
+[node name="Crate21" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(2438, 207)
+
+[node name="Crate59" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(2054, 100)
+
+[node name="Crate22" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(2718, 407)
+
+[node name="Crate23" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(3051, 389)
+
+[node name="Crate24" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(3028, 550)
+
+[node name="Crate25" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(2833, 623)
+
+[node name="Crate60" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(2751, 508)
+
+[node name="Crate26" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(2546, 648)
+
+[node name="Crate27" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(2557, 962)
+
+[node name="Crate28" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(2934, 966)
+
+[node name="Crate29" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(3024, 1175)
+
+[node name="Crate30" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(2434, 1065)
+
+[node name="Crate37" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(1780, 941)
+
+[node name="Crate38" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(1690, 934)
+
+[node name="Crate39" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(1715, 998)
+
+[node name="Crate40" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(1656, 1038)
+
+[node name="Crate41" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(1643, 973)
+
+[node name="Crate42" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(1601, 1058)
+
+[node name="Crate43" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(1761, 1026)
+
+[node name="Crate36" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(1596, 996)
+
+[node name="Crate31" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(2512, 1221)
+
+[node name="Crate44" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(2468, 1595)
+
+[node name="Crate45" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(2232, 1712)
+
+[node name="Crate46" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(2530, 1726)
+
+[node name="Crate47" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(2840, 1625)
+
+[node name="Crate48" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(3067, 1613)
+
+[node name="Crate49" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(3046, 1827)
+
+[node name="Crate50" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(2777, 1813)
+
+[node name="Crate51" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(2387, 1871)
+
+[node name="Crate52" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(2148, 1901)
+
+[node name="Crate53" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(1220, 1758)
+
+[node name="Crate32" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(2680, 1109)
+
+[node name="Crate33" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(1943, 1477)
+
+[node name="Crate34" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(1957, 1008)
+
+[node name="Crate35" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(1957, 1008)
+
+[node name="Crate11" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(1108, 959)
+
+[node name="Crate12" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(1391, 941)
 
 [node name="Crate2" parent="." instance=ExtResource("3_4ifhc")]
 position = Vector2(1420, 1626)
 
+[node name="Barel" parent="." instance=ExtResource("5_twers")]
+position = Vector2(472, 1218)
+
+[node name="Barel2" parent="." instance=ExtResource("5_twers")]
+position = Vector2(341, 1144)
+
+[node name="Barel3" parent="." instance=ExtResource("5_twers")]
+position = Vector2(1300, 939)
+
+[node name="Barel4" parent="." instance=ExtResource("5_twers")]
+position = Vector2(630, 1689)
+
+[node name="Barel5" parent="." instance=ExtResource("5_twers")]
+position = Vector2(1306, 1686)
+
+[node name="Barel6" parent="." instance=ExtResource("5_twers")]
+position = Vector2(2353, 1777)
+
+[node name="Barel7" parent="." instance=ExtResource("5_twers")]
+position = Vector2(2767, 1694)
+
+[node name="Barel8" parent="." instance=ExtResource("5_twers")]
+position = Vector2(2446, 1619)
+
+[node name="Barel9" parent="." instance=ExtResource("5_twers")]
+position = Vector2(2499, 1579)
+
+[node name="Barel10" parent="." instance=ExtResource("5_twers")]
+position = Vector2(2534, 1306)
+
+[node name="Barel11" parent="." instance=ExtResource("5_twers")]
+position = Vector2(2530, 1108)
+
+[node name="Barel12" parent="." instance=ExtResource("5_twers")]
+position = Vector2(2767, 1011)
+
+[node name="Barel13" parent="." instance=ExtResource("5_twers")]
+position = Vector2(2909, 1101)
+
+[node name="Barel14" parent="." instance=ExtResource("5_twers")]
+position = Vector2(2760, 1177)
+
+[node name="Barel15" parent="." instance=ExtResource("5_twers")]
+position = Vector2(2611, 646)
+
+[node name="Barel16" parent="." instance=ExtResource("5_twers")]
+position = Vector2(2880, 503)
+
+[node name="Barel17" parent="." instance=ExtResource("5_twers")]
+position = Vector2(2814, 397)
+
+[node name="Barel18" parent="." instance=ExtResource("5_twers")]
+position = Vector2(2973, 455)
+
+[node name="Barel19" parent="." instance=ExtResource("5_twers")]
+position = Vector2(2481, 152)
+
+[node name="Barel20" parent="." instance=ExtResource("5_twers")]
+position = Vector2(1749, 88)
+
+[node name="Barel21" parent="." instance=ExtResource("5_twers")]
+position = Vector2(2323, 486)
+
+[node name="Barel22" parent="." instance=ExtResource("5_twers")]
+position = Vector2(1963, 363)
+
+[node name="Barel23" parent="." instance=ExtResource("5_twers")]
+position = Vector2(1016, 171)
+
+[node name="Barel24" parent="." instance=ExtResource("5_twers")]
+position = Vector2(1233, 83)
+
 [node name="Dragon" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_tkan5")]
-position = Vector2(1716, 1018)
+position = Vector2(1695, 1014)
 player = NodePath("../Player")
-maxHealth = 100
 
 [node name="Player" parent="." instance=ExtResource("5_8mpgn")]
 position = Vector2(1623, 1859)

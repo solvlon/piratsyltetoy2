@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://cubfii0ct35jf"]
+[gd_scene load_steps=4 format=3 uid="uid://cubfii0ct35jf"]
 
 [ext_resource type="PackedScene" uid="uid://bqqfigd4njdv4" path="res://Pickup/PickupItem.tscn" id="1_n1k32"]
+[ext_resource type="Texture2D" uid="uid://b636wksbchtes" path="res://assets/tilemapandsprites.png" id="2_nys5a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4ms6"]
+atlas = ExtResource("2_nys5a")
+region = Rect2(128, 256, 32, 32)
 
 [node name="apple" instance=ExtResource("1_n1k32")]
 action = "heal"
+
+[node name="Sprite2D" parent="." index="1"]
+texture = SubResource("AtlasTexture_t4ms6")
