@@ -122,6 +122,9 @@ position = Vector2(241, 1137)
 [node name="Crate8" parent="." instance=ExtResource("3_4ifhc")]
 position = Vector2(523, 1155)
 
+[node name="Crate61" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(457, 912)
+
 [node name="Crate54" parent="." instance=ExtResource("3_4ifhc")]
 position = Vector2(392, 1211)
 
@@ -260,6 +263,21 @@ position = Vector2(2148, 1901)
 [node name="Crate53" parent="." instance=ExtResource("3_4ifhc")]
 position = Vector2(1220, 1758)
 
+[node name="Crate62" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(1741, 1758)
+
+[node name="Crate63" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(1789, 1736)
+
+[node name="Crate64" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(2194, 1504)
+
+[node name="Crate65" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(2979, 1406)
+
+[node name="Crate66" parent="." instance=ExtResource("3_4ifhc")]
+position = Vector2(2331, 782)
+
 [node name="Crate32" parent="." instance=ExtResource("3_4ifhc")]
 position = Vector2(2680, 1109)
 
@@ -295,6 +313,27 @@ position = Vector2(630, 1689)
 
 [node name="Barel5" parent="." instance=ExtResource("5_twers")]
 position = Vector2(1306, 1686)
+
+[node name="Barel25" parent="." instance=ExtResource("5_twers")]
+position = Vector2(878, 1304)
+
+[node name="Barel31" parent="." instance=ExtResource("5_twers")]
+position = Vector2(1752, 1722)
+
+[node name="Barel26" parent="." instance=ExtResource("5_twers")]
+position = Vector2(875, 1275)
+
+[node name="Barel27" parent="." instance=ExtResource("5_twers")]
+position = Vector2(845, 1303)
+
+[node name="Barel28" parent="." instance=ExtResource("5_twers")]
+position = Vector2(428, 915)
+
+[node name="Barel29" parent="." instance=ExtResource("5_twers")]
+position = Vector2(977, 645)
+
+[node name="Barel30" parent="." instance=ExtResource("5_twers")]
+position = Vector2(1021, 680)
 
 [node name="Barel6" parent="." instance=ExtResource("5_twers")]
 position = Vector2(2353, 1777)
@@ -343,6 +382,12 @@ position = Vector2(1749, 88)
 
 [node name="Barel21" parent="." instance=ExtResource("5_twers")]
 position = Vector2(2323, 486)
+
+[node name="Barel33" parent="." instance=ExtResource("5_twers")]
+position = Vector2(1705, 747)
+
+[node name="Barel32" parent="." instance=ExtResource("5_twers")]
+position = Vector2(1946, 720)
 
 [node name="Barel22" parent="." instance=ExtResource("5_twers")]
 position = Vector2(1963, 363)
