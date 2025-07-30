@@ -40,6 +40,7 @@ func on_hit(hitpoints, force) -> void:
 	controller.on_hit(force)
 
 func heal(points) -> void:
+	Globals.play_sound("heal")
 	health = clamp(health + points, 0, maxHealth)
 
 func up_max_health(v) -> void:
