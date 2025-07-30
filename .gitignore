@@ -16,3 +16,6 @@ data_*/
 mono_crash.*.json
 *.tmp
 onedragon/assets/music/DragonSong Project/Samples/
+onedragon/assets/music/DragonSong Project/Backup/
+onedragon/assets/music/DragonSong.wav
+onedragon/assets/music/DragonSong.wav.import
