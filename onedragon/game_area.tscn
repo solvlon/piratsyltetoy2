@@ -45,6 +45,8 @@ bg_color = Color(0, 0.817151, 0.862997, 1)
 
 [node name="GameArea" type="Node"]
 
+[node name="Map" parent="." instance=ExtResource("16_qcpok")]
+
 [node name="PlayerCamera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_vo5ts")]
 position = Vector2(1278, 612)
 zoom = Vector2(3, 3)
@@ -441,5 +443,3 @@ vertical_alignment = 1
 position = Vector2(1623, 1857)
 
 [node name="AudioPlayer" parent="." instance=ExtResource("15_5b2at")]
-
-[node name="Map" parent="." instance=ExtResource("16_qcpok")]
