@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ov8pcp2t75av"]
+[gd_scene load_steps=10 format=3 uid="uid://ov8pcp2t75av"]
 
 [ext_resource type="Texture2D" uid="uid://cipmmiifojey6" path="res://assets/menu/menu.png" id="4_j5wjh"]
 [ext_resource type="Texture2D" uid="uid://mn8gbfxsb7hh" path="res://assets/menu/StartButton.png" id="5_vef74"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bynlrhaqsxolk" path="res://assets/menu/help.png" id="7_mfdv2"]
 [ext_resource type="PackedScene" uid="uid://o6b4eb7m0als" path="res://game_area.tscn" id="8_iotsf"]
 [ext_resource type="AudioStream" uid="uid://cg1kgn74n1w07" path="res://assets/music/DragonSong.mp3" id="8_j5wjh"]
+[ext_resource type="Script" uid="uid://boy1a8l23e3o1" path="res://audio_stream_player.gd" id="9_vef74"]
 [ext_resource type="Script" uid="uid://b3it2nmnhdxhc" path="res://menu_manager.gd" id="13_boyg6"]
 [ext_resource type="Texture2D" uid="uid://bjfl6bhy6m4o3" path="res://assets/victory.png" id="20_hb5m1"]
 
@@ -83,8 +84,9 @@ texture_normal = ExtResource("7_mfdv2")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_j5wjh")
-volume_db = -6.0
+volume_db = -16.0
 autoplay = true
+script = ExtResource("9_vef74")
 
 [connection signal="pressed" from="Menu/Victory" to="Menu" method="hideWin"]
 [connection signal="pressed" from="Menu/Defeat" to="Menu" method="hideLoose"]
